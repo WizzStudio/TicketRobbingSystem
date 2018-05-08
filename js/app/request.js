@@ -1,6 +1,7 @@
 /* API Layer */
 define((require) => {
 	const ajax = require('jquery').ajax
+	const dialog = require('./dialog')
 	const baseUrl = ''
 	const request = (url = '/', method = 'get', data = {}) => {
 		return new Promise((resolve, reject) => {
@@ -10,8 +11,13 @@ define((require) => {
 				success: (data) => {
 					resolve(data)
 				},
-				// TODO 统一的错误处理（如弹窗）
-				error: err => (reject(err))
+				error: err => {
+					dialog.showError(`${err.status} ${err.statusText}`, '服务器开小差了~')
+					reject({
+						status:err.status,
+						statusText: err.statusText
+					})
+				}
 			}
 			if (method.toUpperCase() === 'POST') {
 				baseConfig.data = data

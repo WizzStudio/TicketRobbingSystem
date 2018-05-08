@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
+	<title>抢票助手</title>
     <!--dependencies-->
 	<link rel="stylesheet" href="/css/lib/reset.css">
 	<link rel="stylesheet" href="/css/lib/bootstrap-reboot.min.css">
@@ -18,9 +17,39 @@
 </head>
 
 <body>
-<div class="main">
-	<p class="bounceIn test">hello world 1234</p>
+<!--信息录入-->
+<div class="main" id="js-main">
+	<!--<p class="bounceIn test">hello world 1234</p>-->
 </div>
+
+<!--抢票-->
+<div class="rush" id="js-rush" hidden></div>
+
+<!--loading动画-->
+<div class="loader-wrapper" id="js-loader">
+    <div class="loader">
+        <div class="roller"></div>
+        <div class="roller"></div>
+    </div>
+
+    <div id="loader2" class="loader">
+        <div class="roller"></div>
+        <div class="roller"></div>
+    </div>
+
+    <div id="loader3" class="loader">
+        <div class="roller"></div>
+        <div class="roller"></div>
+    </div>
+</div>
+
+<!--footer-->
+<footer class="main-footer">
+    <p class="main-footer-power">powered by 为之工作室</p>
+    <!--<p class="main-footer-power text-black-50">powered by 为之工作室</p>-->
+</footer>
+
+<!-- make screen flexible -->
 <script>
 	document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth / 10 + 'px';
 	document.addEventListener('DOMContentLoaded', function (e) {

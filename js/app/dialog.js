@@ -16,6 +16,12 @@ define((require) => {
 						swal("Deleted!", "Your imaginary file has been deleted!", "success");
 					}
 				});
+		},
+		showSuccess: (title, text) => {
+			swal(title, text, 'success')
+		},
+		showError: (title, text) => {
+			swal(title, text, 'error')
 		}
 	}
 });

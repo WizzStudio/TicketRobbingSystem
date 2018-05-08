@@ -1,0 +1,21 @@
+@import "components/loader";
+
+p {
+  margin: 0!important;
+}
+.main {
+  background: url("/assets/devPics/bg.png") center no-repeat;
+  background-size: cover;
+  &-title{}
+  &-footer{
+    position: fixed;
+    bottom: .2rem;
+    width: 100%;
+    &-power{
+      text-align: center;
+      color: #ffffff;
+      font-weight: 300;
+      font-size: 18px;
+    }
+  }
+}
