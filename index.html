@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="/css/reset.css">
+	<link rel="stylesheet" href="/css/lib/bootstrap-reboot.min.css">
+	<link rel="stylesheet" href="/css/lib/bootstrap.min.css">
+	<!--加载require.js-->
+	<script data-main="js/app.js" src="js/lib/require.js"></script>
+</head>
+
+<body>
+<div class="test">
+	<p>hello world 1234</p>
+</div>
+<script>
+	document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth / 10 + 'px';
+	document.addEventListener('DOMContentLoaded', function (e) {
+		document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth / 10 + 'px';
+	}, false);
+</script>
+</body>
+
+</html>
