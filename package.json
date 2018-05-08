@@ -4,9 +4,10 @@
   "description": "let it go",
   "main": "/js/app/main.js",
   "scripts": {
-    "dev": "echo \"Error: no test specified\" && exit 1",
+    "dev": " concurrently -k -p \"[{name}]\" -n \"sass,fis\" -c \"green.bold,cyan.bold\" \"npm run watch-sass\"  \"npm run fis\"",
     "depoly": "fis3 release",
-    "watch-sass": "node-sass -w scss/index.scss css/index.css --style compact"
+    "watch-sass": "node-sass -w scss/index.scss css/index.css --style compact",
+    "fis": "fis3 release -wL"
   },
   "author": "acery1",
   "license": "ISC",
