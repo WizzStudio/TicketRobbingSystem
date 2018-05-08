@@ -1,0 +1,18 @@
+{
+  "name": "shakedown",
+  "version": "1.0.0",
+  "description": "let it go",
+  "main": "/js/app/main.js",
+  "scripts": {
+    "dev": "echo \"Error: no test specified\" && exit 1",
+    "depoly": "fis3 release",
+    "watch-sass": "node-sass -w scss/index.scss css/index.css --style compact"
+  },
+  "author": "acery1",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "node-sass": "^4.9.0"
+  }
+}
