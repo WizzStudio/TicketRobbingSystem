@@ -6,8 +6,12 @@ define((require) => {
 	const util = require('./utils')
 
 	// 改变主题
-	const changeTheme = () => {
-		$('.js-theme-config').addClass('theme-dark')
+	const changeTheme = (theme) => {
+		let themeMap = {
+			'dark': 'theme-dark',
+			'light': 'theme-light'
+		}
+		$('.js-theme-config').addClass(themeMap[theme])
 	}
 
 
@@ -20,7 +24,7 @@ define((require) => {
 	util.autoCalcHeight($('#js-main'))
 	// util.changeBg($('#js-main'),'https://avatars2.githubusercontent.com/u/768052?v=4')
 	// $('#js-main').css('height', '10rem')
-	util.changeText($('#js-act-title'), 'hello world')
+	util.changeText($('#js-act-title'), '6月15日，相约校歌赛')
 	$('#js-loader').hide()
 	changeTheme()
 });
