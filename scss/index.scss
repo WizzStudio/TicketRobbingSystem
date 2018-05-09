@@ -14,18 +14,69 @@ p {
 
 .rush {
   display: none;
+  position: relative;
+  &-title{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top:10px;
+    color: $light;
+    font-weight: 200;
+    font-size: 24px;
+  }
+  &-button {
+    @include rowMidBox();
+    display: block;
+    padding: 0;
+    height: 1.4rem;
+    width: 4rem;
+    margin-top: 1rem;
+    background: $blue;
+    color: $light;
+    font-size: 22px;
+  }
   &-card {
     @include colMidBox();
+    padding: 10px 10px 0 10px ;
     width: 9rem;
     height: 5.5rem;
     margin-top: 2rem;
     border-radius: 10px;
     background: $light;
   }
-  .card {
+  .ycard {
+    &-icon {
+      width: 100%;
+      padding-bottom: 4px;
+      border-bottom: 1px solid $borderClr;
+      .t2 {
+        margin-left: 20px;
+      }
+    }
     &-img{
       height: 1.2rem;
-      object-fit: contain;
+    }
+    &-img.user{
+      margin-left: 3rem;
+    }
+    &-time{
+      margin-top: 4px;
+      width: 100%;
+      justify-content: space-between;
+    }
+    &-user{
+      margin-top: 6px;
+      width: 100%;
+      .t3 {
+        margin-left: 20px;
+      }
+    }
+    &-info{
+      margin-top: 6px;
+      width: 100%;
+      p {
+        text-align: start;
+      }
     }
   }
 }

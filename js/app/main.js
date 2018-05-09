@@ -16,13 +16,25 @@ define((require) => {
 	const $inputStuNum = $('#js-input-stuNum')
 	const $inputTel = $('#js-input-tel')
 	const $submitBtn = $('.js-submit-button')
+	const $clearBtn = $('.js-clear-button')
 	const $rush = $('#js-rush')
+	const $cardTitle = $('#js-rush-act-title')
+	const $cardStartTime = $('#js-rush-act-startTime')
+	const $cardEndTime = $('#js-rush-act-endTime')
+	const $cardName = $('#js-rush-act-name')
+	const $cardStuNum = $('#js-rush-act-StuNum')
+	const $cardTel = $('#js-rush-act-Tel')
+
 
 	// configuration
 	const btnDurationTime = 600
 
 	const submitBtn = new Particles('button.js-submit-button', {
 		duration: btnDurationTime,
+	})
+
+	const clearBtn = new Particles('button.js-clear-button', {
+		duration: btnDurationTime
 	})
 
 
@@ -47,12 +59,23 @@ define((require) => {
 		return 'success'
 	}
 
+	const updateInfo = (actInfo) => {
+		/* TODO 还要更新活动信息*/
+		$cardName.text(util.getStore('name'))
+		$cardStuNum.text(util.getStore('stuNum'))
+		$cardTel.text(util.getStore('tel'))
+	}
+
 	// 校验当前客户端状态 0 新用户 1 存储了信息的用户
 	const judgeState = () => {
 		const clearState = () => {
 			$mainBox.hide()
 			$loader.hide()
 			$rush.hide()
+		}
+		const resetBtn = () => {
+			$('.particles-wrapper').css('visibility', 'visible').css('transform', 'translateX(0)')
+			$('.particles-wrapper>button').css('transform', 'translateX(0)')
 		}
 		const showState0 = () => {
 			clearState()
@@ -64,6 +87,7 @@ define((require) => {
 					util.setStore('state', '1')
 					window.setTimeout(() => {
 						al.showSuccessMessage('存储成功！')
+						resetBtn()
 						judgeState()
 					}, btnDurationTime)
 				}
@@ -71,12 +95,24 @@ define((require) => {
 		}
 		const showState1 = () => {
 			clearState()
+			updateInfo()
 			$rush.show()
-			$rush.css('display', 'flex').css('justify-content', 'center')
+			$rush.css('display', 'flex').css('align-items', 'center').css('flex-flow', 'column nowrap')
+			$clearBtn.on('click', () => {
+				clearBtn.disintegrate()
+				util.removeAllStore()
+				util.setStore('state', '0')
+				window.setTimeout(() => {
+					al.showSuccessMessage('清除成功！')
+					resetBtn()
+					judgeState()
+				}, btnDurationTime)
+
+			})
 		}
 		let stateHook = {
-			'0' : showState0,
-			'1' : showState1
+			'0': showState0,
+			'1': showState1
 		}
 		if (!util.getStore('state')) return showState0()
 		stateHook[util.getStore('state')]()
@@ -96,14 +132,11 @@ define((require) => {
 	// al.showErrorMessage('fuck')
 
 
-
-
 	// $submitBtn.on('click', () => {
 	// 	if (judgeParams($inputName.val(), $inputStuNum.val(), $inputTel.val()) === 'success') {
 	// 		submitBtn.disintegrate()
 	// 	}
 	// })
-
 
 
 	// util.changeBg($('#js-main'),'https://avatars2.githubusercontent.com/u/768052?v=4')

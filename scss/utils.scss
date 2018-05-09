@@ -1,3 +1,4 @@
+@import "variables";
 /* 盒子排列mixin */
 
 // 横向盒子
@@ -146,4 +147,116 @@
 // 横向排列item的盒子
 .l-box__row{
   @include rowBox();
+}
+
+/* 字体 */
+
+/* typefaces 28 18 16 14 12*/
+.t1 {
+  font-size: 28px;
+}
+
+.t2 {
+  font-size: 18px;
+}
+
+.t3 {
+  font-size: 16px;
+}
+
+.t4 {
+  font-size: 14px;
+}
+
+.t5 {
+  font-size: 12px;
+}
+
+.t_light {
+  font-weight: 300;
+}
+
+.t_normal {
+  font-weight: 400;
+}
+
+.t_bold {
+  font-weight: 600;
+}
+
+/* .字体大小(t1~t5)-颜色(c1~c5)__字体粗细(light/normal/bold) 如: .t3-c2__bold*/
+@for $i from 1 through 5 {
+  .t#{$i} {
+    &-white {
+      @extend .t#{$i};
+      color: $white;
+      &__light {
+        @extend .t_light;
+      }
+      &__normal {
+        @extend .t_normal;
+      }
+      &__bold {
+        @extend .t_bold;
+      }
+    }
+    &-red {
+      @extend .t#{$i};
+      color: $red;
+      &__light {
+        @extend .t_light;
+      }
+      &__normal {
+        @extend .t_normal;
+      }
+      &__bold {
+        @extend .t_bold;
+      }
+    }
+    &-black {
+      @extend .t#{$i};
+      color: $fontClr_main;
+      &__light {
+        @extend .t_light;
+      }
+      &__normal {
+        @extend .t_normal;
+      }
+      &__bold {
+        @extend .t_bold;
+      }
+    }
+    &-c1 {
+      @extend .t#{$i};
+      color: $fontClr_1st
+    }
+    &-c2 {
+      @extend .t#{$i};
+      color: $fontClr_2nd;
+    }
+    &-c3 {
+      @extend .t#{$i};
+      color: $fontClr_3rd
+    }
+    &-c4 {
+      @extend .t#{$i};
+      color: $fontClr_4th;
+    }
+    @for $j from 1 through 4 {
+      &-c#{$j} {
+        &__light {
+          @extend .t#{$i}-c#{$j};
+          @extend .t_light;
+        }
+        &__normal {
+          @extend .t#{$i}-c#{$j};
+          @extend .t_normal;
+        }
+        &__bold {
+          @extend .t#{$i}-c#{$j};
+          @extend .t_bold;
+        }
+      }
+    }
+  }
 }

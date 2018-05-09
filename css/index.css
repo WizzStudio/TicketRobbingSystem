@@ -284,6 +284,9 @@
   -webkit-animation-delay: 0.3s;
   animation-delay: 0.3s; }
 
+/* 字体 */
+/* 宽度 */
+/* 圆角 */
 /* 盒子排列mixin */
 /************************************************************************************/
 /* 图片相关mixin */
@@ -342,6 +345,141 @@
   display: flex;
   flex-flow: row nowrap; }
 
+/* 字体 */
+/* typefaces 28 18 16 14 12*/
+.t1, .t1-white, .t1-red, .t1-black, .t1-c1, .t1-c1__light, .t1-c1__normal, .t1-c1__bold, .t1-c2, .t1-c2__light, .t1-c2__normal, .t1-c2__bold, .t1-c3, .t1-c3__light, .t1-c3__normal, .t1-c3__bold, .t1-c4, .t1-c4__light, .t1-c4__normal, .t1-c4__bold {
+  font-size: 28px; }
+
+.t2, .t2-white, .t2-red, .t2-black, .t2-c1, .t2-c1__light, .t2-c1__normal, .t2-c1__bold, .t2-c2, .t2-c2__light, .t2-c2__normal, .t2-c2__bold, .t2-c3, .t2-c3__light, .t2-c3__normal, .t2-c3__bold, .t2-c4, .t2-c4__light, .t2-c4__normal, .t2-c4__bold {
+  font-size: 18px; }
+
+.t3, .t3-white, .t3-red, .t3-black, .t3-c1, .t3-c1__light, .t3-c1__normal, .t3-c1__bold, .t3-c2, .t3-c2__light, .t3-c2__normal, .t3-c2__bold, .t3-c3, .t3-c3__light, .t3-c3__normal, .t3-c3__bold, .t3-c4, .t3-c4__light, .t3-c4__normal, .t3-c4__bold {
+  font-size: 16px; }
+
+.t4, .t4-white, .t4-red, .t4-black, .t4-c1, .t4-c1__light, .t4-c1__normal, .t4-c1__bold, .t4-c2, .t4-c2__light, .t4-c2__normal, .t4-c2__bold, .t4-c3, .t4-c3__light, .t4-c3__normal, .t4-c3__bold, .t4-c4, .t4-c4__light, .t4-c4__normal, .t4-c4__bold {
+  font-size: 14px; }
+
+.t5, .t5-white, .t5-red, .t5-black, .t5-c1, .t5-c1__light, .t5-c1__normal, .t5-c1__bold, .t5-c2, .t5-c2__light, .t5-c2__normal, .t5-c2__bold, .t5-c3, .t5-c3__light, .t5-c3__normal, .t5-c3__bold, .t5-c4, .t5-c4__light, .t5-c4__normal, .t5-c4__bold {
+  font-size: 12px; }
+
+.t_light, .t1-white__light, .t1-red__light, .t1-black__light, .t1-c1__light, .t1-c2__light, .t1-c3__light, .t1-c4__light, .t2-white__light, .t2-red__light, .t2-black__light, .t2-c1__light, .t2-c2__light, .t2-c3__light, .t2-c4__light, .t3-white__light, .t3-red__light, .t3-black__light, .t3-c1__light, .t3-c2__light, .t3-c3__light, .t3-c4__light, .t4-white__light, .t4-red__light, .t4-black__light, .t4-c1__light, .t4-c2__light, .t4-c3__light, .t4-c4__light, .t5-white__light, .t5-red__light, .t5-black__light, .t5-c1__light, .t5-c2__light, .t5-c3__light, .t5-c4__light {
+  font-weight: 300; }
+
+.t_normal, .t1-white__normal, .t1-red__normal, .t1-black__normal, .t1-c1__normal, .t1-c2__normal, .t1-c3__normal, .t1-c4__normal, .t2-white__normal, .t2-red__normal, .t2-black__normal, .t2-c1__normal, .t2-c2__normal, .t2-c3__normal, .t2-c4__normal, .t3-white__normal, .t3-red__normal, .t3-black__normal, .t3-c1__normal, .t3-c2__normal, .t3-c3__normal, .t3-c4__normal, .t4-white__normal, .t4-red__normal, .t4-black__normal, .t4-c1__normal, .t4-c2__normal, .t4-c3__normal, .t4-c4__normal, .t5-white__normal, .t5-red__normal, .t5-black__normal, .t5-c1__normal, .t5-c2__normal, .t5-c3__normal, .t5-c4__normal {
+  font-weight: 400; }
+
+.t_bold, .t1-white__bold, .t1-red__bold, .t1-black__bold, .t1-c1__bold, .t1-c2__bold, .t1-c3__bold, .t1-c4__bold, .t2-white__bold, .t2-red__bold, .t2-black__bold, .t2-c1__bold, .t2-c2__bold, .t2-c3__bold, .t2-c4__bold, .t3-white__bold, .t3-red__bold, .t3-black__bold, .t3-c1__bold, .t3-c2__bold, .t3-c3__bold, .t3-c4__bold, .t4-white__bold, .t4-red__bold, .t4-black__bold, .t4-c1__bold, .t4-c2__bold, .t4-c3__bold, .t4-c4__bold, .t5-white__bold, .t5-red__bold, .t5-black__bold, .t5-c1__bold, .t5-c2__bold, .t5-c3__bold, .t5-c4__bold {
+  font-weight: 600; }
+
+/* .字体大小(t1~t5)-颜色(c1~c5)__字体粗细(light/normal/bold) 如: .t3-c2__bold*/
+.t1-white {
+  color: #fff; }
+
+.t1-red {
+  color: #d10000; }
+
+.t1-black {
+  color: #231815; }
+
+.t1-c1, .t1-c1__light, .t1-c1__normal, .t1-c1__bold {
+  color: #333333; }
+
+.t1-c2, .t1-c2__light, .t1-c2__normal, .t1-c2__bold {
+  color: #999999; }
+
+.t1-c3, .t1-c3__light, .t1-c3__normal, .t1-c3__bold {
+  color: #b9b9b9; }
+
+.t1-c4, .t1-c4__light, .t1-c4__normal, .t1-c4__bold {
+  color: #fadbdb; }
+
+.t2-white {
+  color: #fff; }
+
+.t2-red {
+  color: #d10000; }
+
+.t2-black {
+  color: #231815; }
+
+.t2-c1, .t2-c1__light, .t2-c1__normal, .t2-c1__bold {
+  color: #333333; }
+
+.t2-c2, .t2-c2__light, .t2-c2__normal, .t2-c2__bold {
+  color: #999999; }
+
+.t2-c3, .t2-c3__light, .t2-c3__normal, .t2-c3__bold {
+  color: #b9b9b9; }
+
+.t2-c4, .t2-c4__light, .t2-c4__normal, .t2-c4__bold {
+  color: #fadbdb; }
+
+.t3-white {
+  color: #fff; }
+
+.t3-red {
+  color: #d10000; }
+
+.t3-black {
+  color: #231815; }
+
+.t3-c1, .t3-c1__light, .t3-c1__normal, .t3-c1__bold {
+  color: #333333; }
+
+.t3-c2, .t3-c2__light, .t3-c2__normal, .t3-c2__bold {
+  color: #999999; }
+
+.t3-c3, .t3-c3__light, .t3-c3__normal, .t3-c3__bold {
+  color: #b9b9b9; }
+
+.t3-c4, .t3-c4__light, .t3-c4__normal, .t3-c4__bold {
+  color: #fadbdb; }
+
+.t4-white {
+  color: #fff; }
+
+.t4-red {
+  color: #d10000; }
+
+.t4-black {
+  color: #231815; }
+
+.t4-c1, .t4-c1__light, .t4-c1__normal, .t4-c1__bold {
+  color: #333333; }
+
+.t4-c2, .t4-c2__light, .t4-c2__normal, .t4-c2__bold {
+  color: #999999; }
+
+.t4-c3, .t4-c3__light, .t4-c3__normal, .t4-c3__bold {
+  color: #b9b9b9; }
+
+.t4-c4, .t4-c4__light, .t4-c4__normal, .t4-c4__bold {
+  color: #fadbdb; }
+
+.t5-white {
+  color: #fff; }
+
+.t5-red {
+  color: #d10000; }
+
+.t5-black {
+  color: #231815; }
+
+.t5-c1, .t5-c1__light, .t5-c1__normal, .t5-c1__bold {
+  color: #333333; }
+
+.t5-c2, .t5-c2__light, .t5-c2__normal, .t5-c2__bold {
+  color: #999999; }
+
+.t5-c3, .t5-c3__light, .t5-c3__normal, .t5-c3__bold {
+  color: #b9b9b9; }
+
+.t5-c4, .t5-c4__light, .t5-c4__normal, .t5-c4__bold {
+  color: #fadbdb; }
+
+/* 字体 */
+/* 宽度 */
+/* 圆角 */
 .theme-dark {
   color: #000 !important;
   border-color: #000 !important; }
@@ -362,6 +500,9 @@
 .ft-green {
   color: #75ea27; }
 
+/* 字体 */
+/* 宽度 */
+/* 圆角 */
 .theme-1 {
   --color-item-bg: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
   --color-action: #121019;
@@ -418,19 +559,62 @@ p {
   display: none; }
 
 .rush {
-  display: none; }
+  display: none;
+  position: relative; }
+  .rush-title {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 10px;
+    color: #fff;
+    font-weight: 200;
+    font-size: 24px; }
+  .rush-button {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    display: block;
+    padding: 0;
+    height: 1.4rem;
+    width: 4rem;
+    margin-top: 1rem;
+    background: #2581d4;
+    color: #fff;
+    font-size: 22px; }
   .rush-card {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    padding: 10px 10px 0 10px;
     width: 9rem;
     height: 5.5rem;
     margin-top: 2rem;
     border-radius: 10px;
     background: #fff; }
-  .rush .card-img {
-    height: 1.2rem;
-    object-fit: contain; }
+  .rush .ycard-icon {
+    width: 100%;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #D9D9D9; }
+    .rush .ycard-icon .t2, .rush .ycard-icon .t2-white, .rush .ycard-icon .t2-red, .rush .ycard-icon .t2-black, .rush .ycard-icon .t2-c1, .rush .ycard-icon .t2-c1__light, .rush .ycard-icon .t2-c1__normal, .rush .ycard-icon .t2-c1__bold, .rush .ycard-icon .t2-c2, .rush .ycard-icon .t2-c2__light, .rush .ycard-icon .t2-c2__normal, .rush .ycard-icon .t2-c2__bold, .rush .ycard-icon .t2-c3, .rush .ycard-icon .t2-c3__light, .rush .ycard-icon .t2-c3__normal, .rush .ycard-icon .t2-c3__bold, .rush .ycard-icon .t2-c4, .rush .ycard-icon .t2-c4__light, .rush .ycard-icon .t2-c4__normal, .rush .ycard-icon .t2-c4__bold {
+      margin-left: 20px; }
+  .rush .ycard-img {
+    height: 1.2rem; }
+  .rush .ycard-img.user {
+    margin-left: 3rem; }
+  .rush .ycard-time {
+    margin-top: 4px;
+    width: 100%;
+    justify-content: space-between; }
+  .rush .ycard-user {
+    margin-top: 6px;
+    width: 100%; }
+    .rush .ycard-user .t3, .rush .ycard-user .t3-white, .rush .ycard-user .t3-red, .rush .ycard-user .t3-black, .rush .ycard-user .t3-c1, .rush .ycard-user .t3-c1__light, .rush .ycard-user .t3-c1__normal, .rush .ycard-user .t3-c1__bold, .rush .ycard-user .t3-c2, .rush .ycard-user .t3-c2__light, .rush .ycard-user .t3-c2__normal, .rush .ycard-user .t3-c2__bold, .rush .ycard-user .t3-c3, .rush .ycard-user .t3-c3__light, .rush .ycard-user .t3-c3__normal, .rush .ycard-user .t3-c3__bold, .rush .ycard-user .t3-c4, .rush .ycard-user .t3-c4__light, .rush .ycard-user .t3-c4__normal, .rush .ycard-user .t3-c4__bold {
+      margin-left: 20px; }
+  .rush .ycard-info {
+    margin-top: 6px;
+    width: 100%; }
+    .rush .ycard-info p {
+      text-align: start; }
 
 .main {
   overflow: hidden;

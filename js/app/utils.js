@@ -36,7 +36,7 @@ define((require) => {
 	 * 清除所有的localStorage
 	 */
 	const removeAllStore = () => {
-		for (let i of Object.keys(window.sessionStorage)) {
+		for (let i of Object.keys(window.localStorage)) {
 			window.localStorage.removeItem(i)
 		}
 	}
