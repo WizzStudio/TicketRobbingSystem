@@ -415,6 +415,7 @@ p {
   margin: 0; }
 
 .main {
+  display: none;
   position: relative;
   background: url("/assets/devPics/bg.png") center no-repeat;
   background-size: cover; }
@@ -468,8 +469,7 @@ p {
     margin-top: 2rem;
     background: #2581d4;
     color: #fff;
-    font-size: 22px;
-    font-weight: 300; }
+    font-size: 22px; }
   .main-footer {
     position: fixed;
     bottom: .2rem;

@@ -61,8 +61,8 @@ define((require) => {
 
 	// 存储个人信息到localStorage
 	const setInfo = (name, tel, stuNum) => {
-		if (!vali.isMobilePhone(tel, 'zh-CN')) al.showError('存储失败！', '非电话号码格式')
-		if (!vali.isNumeric(stuNum)) al.showError('存储失败！', '学号出现非数字')
+		if (!vali.isMobilePhone(tel, 'zh-CN')) return al.showError('存储失败！', '非电话号码格式')
+		if (!vali.isNumeric(stuNum)) return al.showError('存储失败！', '学号出现非数字')
 		setStore('name', name)
 		setStore('tel', tel)
 		setStore('stuNum', stuNum)

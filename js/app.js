@@ -6,4 +6,6 @@ requirejs.config({
 });
 
 // entry files
-requirejs(['app/main']);
+window.onload = () => {
+	requirejs(['app/main']);
+}
