@@ -1,21 +1,145 @@
 @import "components/loader";
+@import "utils";
+
+$blue: #2581d4;
+$yellow: #ffbe33;
+$red: #d10000;
+$light : #fff;
+$dark: #000;
+$green: #75ea27;
+/* common */
+
+/* layouts */
+.l-box__allMid {
+  @include allMidBox();
+}
+
+// 横向盒子且垂直居中
+.l-box__rowMid {
+  @include rowMidBox();
+}
+
+// 竖向盒子且水平居中
+.l-box__verMid {
+  @include colMidBox();
+}
+
+// 横向排列item的盒子
+.l-box__row{
+  @include rowBox();
+}
+
+
 
 p {
-  margin: 0!important;
+  margin: 0;
 }
 .main {
+  position: relative;
   background: url("/assets/devPics/bg.png") center no-repeat;
   background-size: cover;
-  &-title{}
+  &-title{
+    padding-top: .6rem;
+    color: $light;
+    text-align: center;
+    font-weight: 200;
+    font-size: 24px;
+  }
+  &-title_light {
+    color: $light;
+  }
+  &-title_dark {
+    color: $dark;
+  }
+
+  &-container {
+    padding: 0 .5rem;
+  }
+
+  &-input {
+    width: 6rem;
+    height: 1rem;
+    background: transparent;
+    border: 1px solid $light;
+    border-radius: 10px;
+    font-size: 16px;
+    padding-left: 10px;
+    color: $light;
+    &::placeholder {
+      color: $light;
+      font-size: 16px;
+      font-weight: 300;
+    }
+    &-label, &-holder {
+      width: 1.5rem;
+      color: $light;
+      font-size: 18px;
+      font-weight: 300;
+    }
+    &-label{
+      font-size: 12px;
+      padding-left: 10px;
+    }
+  }
   &-footer{
     position: fixed;
     bottom: .2rem;
     width: 100%;
     &-power{
       text-align: center;
-      color: #ffffff;
+      color: $light;
       font-weight: 300;
       font-size: 18px;
     }
   }
+}
+
+.mb1 {
+  margin-bottom: 1em;
+}
+.mt1 {
+  margin-top: 1rem;
+}
+.mt2 {
+  margin-top: 2rem;
+}
+.ml1 {
+  margin-left: 1rem;
+}
+.mr1 {
+  margin-right: 1rem;
+}
+
+.mb05 {
+  margin-bottom: 0.5em;
+}
+.mt05 {
+  margin-top: 0.5rem;
+}
+.ml05 {
+  margin-left: 0.5rem;
+}
+.mr05 {
+  margin-right: 0.5rem;
+}
+
+.theme-dark {
+  color: $dark!important;
+  border-color: $dark!important;
+}
+.theme-dark::placeholder {
+  color: $dark!important;
+}
+.theme-light {
+  color: $light!important;
+  border-color: $light!important;
+}
+.theme-light::placeholder {
+  color: $light!important;
+}
+.ft-red {
+  color: lighten($red, 20%);
+}
+.ft-green {
+  color: $green;
 }

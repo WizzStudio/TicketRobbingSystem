@@ -1,25 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>抢票助手</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>抢票助手</title>
     <!--dependencies-->
-	<link rel="stylesheet" href="/css/lib/reset.css">
-	<link rel="stylesheet" href="/css/lib/bootstrap-reboot.min.css">
-	<link rel="stylesheet" href="/css/lib/bootstrap.min.css">
-	<link rel="stylesheet" href="/css/lib/animate.min.css">
+    <link rel="stylesheet" href="/css/lib/reset.css">
+    <link rel="stylesheet" href="/css/lib/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/lib/animate.min.css">
     <!--styles-->
     <link rel="stylesheet" href="/css/index.css">
-	<!--加载require.js-->
-	<script data-main="js/app.js" src="js/lib/require.js"></script>
+    <!--加载require.js-->
+    <script data-main="js/app.js" src="js/lib/require.js"></script>
 </head>
 
 <body>
 <!--信息录入-->
 <div class="main" id="js-main">
-	<!--<p class="bounceIn test">hello world 1234</p>-->
+    <p id="js-act-title" class="main-title js-theme-config"></p>
+    <div class="main-container mt2">
+        <!--姓名-->
+        <div class="l-box__rowMid  mt1 fadeInLeft animated">
+            <span class="main-input-holder js-theme-config">姓名：</span>
+            <input type="text" class="main-input js-theme-config" placeholder="请输入你的真实姓名" autofocus>
+            <span class="main-input-label ft-red">请输入姓名</span>
+        </div>
+        <!--学号-->
+        <div class="l-box__rowMid  mt1 fadeInLeft animated">
+            <span class="main-input-holder js-theme-config">学号：</span>
+            <input type="number" class="main-input js-theme-config" placeholder="请输入真实学号">
+            <span class="main-input-label ft-red">请输入学号</span>
+        </div>
+        <!--电话-->
+        <div class="l-box__rowMid  mt1 fadeInLeft animated">
+            <span class="main-input-holder js-theme-config">电话：</span>
+            <input type="number" class="main-input js-theme-config" placeholder="请输入有效电话">
+            <span class="main-input-label ft-red">请输入电话</span>
+        </div>
+    </div>
+    
 </div>
 
 <!--抢票-->
@@ -45,7 +66,7 @@
 
 <!--footer-->
 <footer class="main-footer">
-    <p class="main-footer-power">powered by 为之工作室</p>
+    <p class="main-footer-power js-theme-config">powered by 为之工作室</p>
     <!--<p class="main-footer-power text-black-50">powered by 为之工作室</p>-->
 </footer>
 
