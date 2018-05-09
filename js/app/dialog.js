@@ -22,6 +22,22 @@ define((require) => {
 		},
 		showError: (title, text) => {
 			swal(title, text, 'error')
+		},
+		showSuccessMessage: (text) => {
+			swal({
+				icon: 'success',
+				buttons:false,
+				timer: 2000,
+				text: text,
+			});
+		},
+		showErrorMessage: (text) => {
+			swal({
+				icon: 'error',
+				buttons:false,
+				timer: 2000,
+				text: text,
+			});
 		}
 	}
 });

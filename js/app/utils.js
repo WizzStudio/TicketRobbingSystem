@@ -54,7 +54,9 @@ define((require) => {
 
 	// 动态改变文本
 	const changeText = ($dom, text) => {
+		$dom.hide()
 		$dom.text(text)
+		$dom.show()
 	}
 
 	// 存储个人信息到localStorage

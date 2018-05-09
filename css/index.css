@@ -330,7 +330,8 @@ p {
   .main-title_dark {
     color: #000; }
   .main-container {
-    padding: 0 .5rem; }
+    overflow: hidden;
+    padding: 1.5rem .5rem 0; }
   .main-input {
     width: 6rem;
     height: 1rem;
@@ -411,3 +412,5 @@ p {
 
 .ft-green {
   color: #75ea27; }
+
+/* config dialog*/
