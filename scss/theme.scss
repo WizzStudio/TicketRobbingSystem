@@ -1,0 +1,22 @@
+@import "variables";
+
+.theme-dark {
+  color: $dark!important;
+  border-color: $dark!important;
+}
+.theme-dark::placeholder {
+  color: $dark!important;
+}
+.theme-light {
+  color: $light!important;
+  border-color: $light!important;
+}
+.theme-light::placeholder {
+  color: $light!important;
+}
+.ft-red {
+  color: lighten($red, 20%);
+}
+.ft-green {
+  color: $green;
+}

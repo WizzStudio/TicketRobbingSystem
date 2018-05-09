@@ -33,8 +33,13 @@ define((require) => {
 	// request.sayHello()
 	// al.showHello()
 	// al.showErrorMessage('fuck')
-	let btn = new Particles('.js-submit-button')
-	btn.disintegrate()
+	let btn = new Particles('button.js-submit-button', {
+		duration: 3000,
+	})
+
+	$('.js-submit-button').on('click', () => {
+		btn.disintegrate()
+	})
 
 	util.autoCalcHeight($('#js-main'))
 

@@ -94,3 +94,56 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* some util css*/
+.mb1 {
+  margin-bottom: 1em;
+}
+.mt1 {
+  margin-top: 1rem;
+}
+.mt105 {
+  margin-top: 1.5rem;
+}
+.mt2 {
+  margin-top: 2rem;
+}
+.ml1 {
+  margin-left: 1rem;
+}
+.mr1 {
+  margin-right: 1rem;
+}
+
+.mb05 {
+  margin-bottom: 0.5em;
+}
+.mt05 {
+  margin-top: 0.5rem;
+}
+.ml05 {
+  margin-left: 0.5rem;
+}
+.mr05 {
+  margin-right: 0.5rem;
+}
+
+/* layouts */
+.l-box__allMid {
+  @include allMidBox();
+}
+
+// 横向盒子且垂直居中
+.l-box__rowMid {
+  @include rowMidBox();
+}
+
+// 竖向盒子且水平居中
+.l-box__verMid {
+  @include colMidBox();
+}
+
+// 横向排列item的盒子
+.l-box__row{
+  @include rowBox();
+}
