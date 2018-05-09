@@ -1,10 +1,29 @@
 define((require) => {
+	// dependencies
 	const $ = require('jquery')
-	const validator = require('validator') // 输入校验库
+	const validator = require('validator')
 	const Particles = require('particles')
 	const request = require('./request')
 	const al = require('./dialog')
 	const util = require('./utils')
+
+	// Element
+	const $main = $('#js-main')
+	const $mainTitle = $('#js-act-title')
+	const $mainBox = $('.js-mainBox')
+	const $loader = $('#js-loader')
+	const $inputName = $('#js-input-name')
+	const $inputStuNum = $('#js-input-stuNum')
+	const $inputTel = $('#js-input-tel')
+	const $submitBtn = $('.js-submit-button')
+	const $rush = $('#js-rush')
+
+	// configuration
+	const btnDurationTime = 600
+
+	const submitBtn = new Particles('button.js-submit-button', {
+		duration: btnDurationTime,
+	})
 
 
 	// 改变主题
@@ -28,38 +47,70 @@ define((require) => {
 		return 'success'
 	}
 
-	// 校验当前客户端状态
+	// 校验当前客户端状态 0 新用户 1 存储了信息的用户
 	const judgeState = () => {
-		// 先判断UA做重定向
-		//
+		const clearState = () => {
+			$mainBox.hide()
+			$loader.hide()
+			$rush.hide()
+		}
+		const showState0 = () => {
+			clearState()
+			$mainBox.show()
+			$submitBtn.on('click', () => {
+				if (judgeParams($inputName.val(), $inputStuNum.val(), $inputTel.val()) === 'success') {
+					submitBtn.disintegrate()
+					util.setInfo($inputName.val(), $inputTel.val(), $inputStuNum.val())
+					util.setStore('state', '1')
+					window.setTimeout(() => {
+						al.showSuccessMessage('存储成功！')
+						judgeState()
+					}, btnDurationTime)
+				}
+			})
+		}
+		const showState1 = () => {
+			clearState()
+			$rush.show()
+			$rush.css('display', 'flex').css('justify-content', 'center')
+		}
+		let stateHook = {
+			'0' : showState0,
+			'1' : showState1
+		}
+		if (!util.getStore('state')) return showState0()
+		stateHook[util.getStore('state')]()
 	}
 
 
 	const _init = () => {
-
+		util.autoCalcHeight($main) // 计算高度
+		changeTheme() // 改变主题
+		util.changeText($mainTitle, '6月15日，相约校歌赛') // 改变活动标题
+		judgeState() // 判断状态
+		// util.changeBg($('#js-main'),'https://avatars2.githubusercontent.com/u/768052?v=4')
 	}
 
 	// request.sayHello()
 	// al.showHello()
 	// al.showErrorMessage('fuck')
-	let btn = new Particles('button.js-submit-button', {
-		duration: 3000,
-	})
 
 
 
-	$('.js-submit-button').on('click', () => {
-		if (judgeParams($('#js-input-name').val(), $('#js-input-stuNum').val(), $('#js-input-tel').val()) === 'success') {
-			btn.disintegrate()
-		}
-	})
 
-	util.autoCalcHeight($('#js-main'))
+	// $submitBtn.on('click', () => {
+	// 	if (judgeParams($inputName.val(), $inputStuNum.val(), $inputTel.val()) === 'success') {
+	// 		submitBtn.disintegrate()
+	// 	}
+	// })
+
+
 
 	// util.changeBg($('#js-main'),'https://avatars2.githubusercontent.com/u/768052?v=4')
 	// $('#js-main').css('height', '10rem')
-	util.changeText($('#js-act-title'), '6月15日，相约校歌赛')
-	$('#js-main').show()
-	$('#js-loader').hide()
-	changeTheme()
+
+	// $mainBox.show()
+	// $loader.hide()
+
+	_init()
 });

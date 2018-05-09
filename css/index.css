@@ -414,8 +414,26 @@
 p {
   margin: 0; }
 
+.mainBox {
+  display: none; }
+
+.rush {
+  display: none; }
+  .rush-card {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 9rem;
+    height: 5.5rem;
+    margin-top: 2rem;
+    border-radius: 10px;
+    background: #fff; }
+  .rush .card-img {
+    height: 1.2rem;
+    object-fit: contain; }
+
 .main {
-  display: none;
+  overflow: hidden;
   position: relative;
   background: url("/assets/devPics/bg.png") center no-repeat;
   background-size: cover; }
@@ -471,7 +489,7 @@ p {
     color: #fff;
     font-size: 22px; }
   .main-footer {
-    position: fixed;
+    position: absolute;
     bottom: .2rem;
     width: 100%; }
     .main-footer-power {

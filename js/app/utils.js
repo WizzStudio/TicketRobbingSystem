@@ -78,6 +78,9 @@ define((require) => {
 		changeBg,
 		changeText,
 		clearInfo,
-		setInfo
+		setInfo,
+		setStore,
+		removeAllStore,
+		getStore
 	}
 });

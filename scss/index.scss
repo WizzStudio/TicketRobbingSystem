@@ -8,8 +8,30 @@ p {
   margin: 0;
 }
 
-.main {
+.mainBox{
   display: none;
+}
+
+.rush {
+  display: none;
+  &-card {
+    @include colMidBox();
+    width: 9rem;
+    height: 5.5rem;
+    margin-top: 2rem;
+    border-radius: 10px;
+    background: $light;
+  }
+  .card {
+    &-img{
+      height: 1.2rem;
+      object-fit: contain;
+    }
+  }
+}
+
+.main {
+  overflow: hidden; // bfc
   position: relative;
   background: url("/assets/devPics/bg.png") center no-repeat;
   background-size: cover;
@@ -76,7 +98,7 @@ p {
     //background: rgba(252,13,27,1);
   }
   &-footer {
-    position: fixed;
+    position: absolute;
     bottom: .2rem;
     width: 100%;
     &-power {

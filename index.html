@@ -19,37 +19,47 @@
 <body>
 <!--信息录入-->
 <div class="main" id="js-main">
-    <p id="js-act-title" class="main-title js-theme-config bounceInDown animated"></p>
-    <div class="main-container">
-        <!--姓名-->
-        <div class="l-box__rowMid  mt1 fadeInLeft animated">
-            <span class="main-input-holder js-theme-config">姓名：</span>
-            <input id="js-input-name" type="text" class="main-input js-theme-config" placeholder="请输入你的真实姓名" autofocus="autofocus">
-            <!--<span class="main-input-label ft-red">请输入姓名</span>-->
-        </div>
-        <!--学号-->
-        <div class="l-box__rowMid  mt1 fadeInLeft animated">
-            <span class="main-input-holder js-theme-config">学号：</span>
-            <input id="js-input-stuNum" type="tel" class="main-input js-theme-config" placeholder="请输入真实学号">
-            <!--<span class="main-input-label ft-red">请输入学号</span>-->
-        </div>
-        <!--电话-->
-        <div class="l-box__rowMid  mt1 fadeInLeft animated">
-            <span class="main-input-holder js-theme-config">手机：</span>
-            <input id="js-input-tel" type="tel" class="main-input js-theme-config" placeholder="请输入有效手机号码">
-            <!--<span class="main-input-label ft-red">请输入电话</span>-->
-        </div>
+    <div class="mainBox js-mainBox">
+        <p id="js-act-title" class="main-title js-theme-config bounceInDown animated"></p>
+        <div class="main-container">
+            <!--姓名-->
+            <div class="l-box__rowMid  mt1 fadeInLeft animated">
+                <span class="main-input-holder js-theme-config">姓名：</span>
+                <input id="js-input-name" type="text" class="main-input js-theme-config" placeholder="请输入你的真实姓名" autofocus="autofocus">
+                <!--<span class="main-input-label ft-red">请输入姓名</span>-->
+            </div>
+            <!--学号-->
+            <div class="l-box__rowMid  mt1 fadeInLeft animated">
+                <span class="main-input-holder js-theme-config">学号：</span>
+                <input id="js-input-stuNum" type="tel" class="main-input js-theme-config" placeholder="请输入真实学号">
+                <!--<span class="main-input-label ft-red">请输入学号</span>-->
+            </div>
+            <!--电话-->
+            <div class="l-box__rowMid  mt1 fadeInLeft animated">
+                <span class="main-input-holder js-theme-config">手机：</span>
+                <input id="js-input-tel" type="tel" class="main-input js-theme-config" placeholder="请输入有效手机号码">
+                <!--<span class="main-input-label ft-red">请输入电话</span>-->
+            </div>
 
-        <!--<button class="js-submit-button main-button">提交个人信息</button>-->
+            <!--<button class="js-submit-button main-button">提交个人信息</button>-->
 
-        <div class="theme-1 l-box__verMid">
-            <button class="particles-button js-submit-button main-button js-theme-config">保存信息</button>
+            <div class="theme-1 l-box__verMid bounceInUp animated">
+                <button class="particles-button js-submit-button main-button">保存信息</button>
+            </div>
+        </div>
+    </div>
+    <!--抢票-->
+    <div class="rush" id="js-rush">
+        <div class="rush-card bounceInDown animated">
+            <div>
+                <p></p>
+            </div>
+            <img class="card-img" src="/assets/logo.png" alt="Ticket">
         </div>
     </div>
 </div>
 
-<!--抢票-->
-<div class="rush" id="js-rush" hidden></div>
+
 
 <!--loading动画-->
 <div class="loader-wrapper" id="js-loader">
