@@ -38,7 +38,6 @@ define((require) => {
 		duration: btnDurationTime
 	})
 
-
 	// 改变主题
 	const changeTheme = (theme) => {
 		let themeMap = {
@@ -125,14 +124,13 @@ define((require) => {
 		if (!util.getStore('state')) return showState0()
 		stateHook[util.getStore('state')]()
 	}
-
-
+	
 	const _init = () => {
 		util.autoCalcHeight($main) // 计算高度
-		changeTheme() // 改变主题
+		changeTheme('light') // 改变主题
 		util.changeText($mainTitle, '6月15日，相约校歌赛') // 改变活动标题
 		judgeState() // 判断状态
-		// util.changeBg($('#js-main'),'https://avatars2.githubusercontent.com/u/768052?v=4')
+		// util.changeBg($('#js-main'),'/assets/devPics/bg.jpeg')
 	}
 
 	// request.sayHello()

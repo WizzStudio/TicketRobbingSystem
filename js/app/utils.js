@@ -49,7 +49,7 @@ define((require) => {
 	// 动态改变背景图片
 	const changeBg = ($dom, url) => {
 		$dom.css('background', `url('${url}')  center no-repeat`)
-		$dom.css('background-size', 'cover')
+		$dom.css('background-size', '100% 100%')
 	}
 
 	// 动态改变文本

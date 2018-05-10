@@ -1,5 +1,5 @@
 
-fis.match('*.{css,js,png}', {
+fis.match('*.{css,js,png,ico,jpeg}', {
   useHash: false,
   deploy: fis.plugin('http-push', {
     receiver: 'http://47.95.115.82:8999/receiver',
