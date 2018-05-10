@@ -73,6 +73,17 @@ define((require) => {
 		removeAllStore()
 	}
 
+	// 函数防抖
+	const debounce = (fn, boomTime) => {
+		let timer = null;
+		return () => {
+			if (timer) {
+				clearTimeout(timer);
+			}
+			timer = setTimeout(fn, boomTime);
+		};
+	};
+
 	return {
 		autoCalcHeight,
 		changeBg,
@@ -81,6 +92,7 @@ define((require) => {
 		setInfo,
 		setStore,
 		removeAllStore,
-		getStore
+		getStore,
+		debounce
 	}
 });

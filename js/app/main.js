@@ -26,7 +26,6 @@ define((require) => {
 	const $cardTel = $('#js-rush-act-tel')
 	const $footer = $('#js-main-footer')
 
-
 	// configuration
 	const btnDurationTime = 600
 
@@ -124,7 +123,7 @@ define((require) => {
 		if (!util.getStore('state')) return showState0()
 		stateHook[util.getStore('state')]()
 	}
-	
+
 	const _init = () => {
 		util.autoCalcHeight($main) // 计算高度
 		changeTheme('light') // 改变主题

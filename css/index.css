@@ -558,6 +558,16 @@ p {
 .mainBox {
   display: none; }
 
+.freshBtn {
+  display: none;
+  position: absolute;
+  bottom: -3rem;
+  display: flex;
+  flex-flow: nowrap column;
+  justify-content: center;
+  align-items: center;
+  height: 60px; }
+
 .rush {
   display: none;
   position: relative; }

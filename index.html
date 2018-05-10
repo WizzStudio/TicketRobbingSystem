@@ -5,6 +5,9 @@
     <link rel="shortcut icon" href="/favicon.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" CONTENT="0">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
     <title>抢票助手</title>
     <!--dependencies-->
     <link rel="stylesheet" href="/css/lib/reset.css">
@@ -26,7 +29,8 @@
             <!--姓名-->
             <div class="l-box__rowMid  mt1 fadeInLeft animated">
                 <span class="main-input-holder js-theme-config">姓名：</span>
-                <input id="js-input-name" type="text" class="main-input js-theme-config" placeholder="请输入你的真实姓名" autofocus="autofocus">
+                <input id="js-input-name" type="text" class="main-input js-theme-config" placeholder="请输入你的真实姓名"
+                       autofocus="autofocus">
                 <!--<span class="main-input-label ft-red">请输入姓名</span>-->
             </div>
             <!--学号-->
@@ -51,7 +55,7 @@
     </div>
     <!--抢票-->
     <div class="rush" id="js-rush">
-        <p  class="rush-title js-theme-config bounceInDown animated">个人信息</p>
+        <p class="rush-title js-theme-config bounceInDown animated">个人信息</p>
         <div class="rush-card bounceInDown animated">
             <div class="l-box__rowMid ycard-icon">
                 <img class="ycard-img" src="/assets/logo.png" alt="Ticket">
@@ -85,7 +89,6 @@
 </div>
 
 
-
 <!--loading动画-->
 <div class="loader-wrapper" id="js-loader">
     <div class="loader">
@@ -102,20 +105,30 @@
         <div class="roller"></div>
         <div class="roller"></div>
     </div>
+
+    <button class="btn btn-dark freshBtn bounceInUp animated">fresh</button>
 </div>
 
 <!--&lt;!&ndash;footer&ndash;&gt;-->
 <!--<footer class="main-footer">-->
-    <!--<p class="main-footer-power js-theme-config">powered by 为之工作室</p>-->
-    <!--&lt;!&ndash;<p class="main-footer-power text-black-50">powered by 为之工作室</p>&ndash;&gt;-->
+<!--<p class="main-footer-power js-theme-config">powered by 为之工作室</p>-->
+<!--&lt;!&ndash;<p class="main-footer-power text-black-50">powered by 为之工作室</p>&ndash;&gt;-->
 <!--</footer>-->
 
 <!-- make screen flexible -->
 <script>
-	document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth / 10 + 'px';
-	document.addEventListener('DOMContentLoaded', function (e) {
+	if (window.innerWidth < 1024) {
 		document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth / 10 + 'px';
-	}, false);
+		document.addEventListener('DOMContentLoaded', function (e) {
+			document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth / 10 + 'px';
+			document.getElementsByClassName('freshBtn')[0].onclick = function (e) {
+				e.preventDefault()
+				window.location.reload()
+			}
+		}, false);
+	} else {
+		document.getElementsByTagName('html')[0].style.fontSize = 40 + 'px'
+	}
 </script>
 </body>
 

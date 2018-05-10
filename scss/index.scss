@@ -12,6 +12,14 @@ p {
   display: none;
 }
 
+.freshBtn {
+  display: none;
+  position: absolute;
+  bottom: -3rem;
+  @include allMidBox();
+  height: 60px;
+}
+
 .rush {
   display: none;
   position: relative;
