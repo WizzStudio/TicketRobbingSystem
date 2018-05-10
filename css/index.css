@@ -636,7 +636,7 @@ p {
     flex-flow: column nowrap;
     align-items: center;
     overflow: hidden;
-    padding: 1.5rem .5rem 0 .1rem; }
+    padding: 1.5rem .5rem 0 .5rem; }
   .main-input {
     width: 7rem;
     height: 1rem;
@@ -653,7 +653,7 @@ p {
     .main-input:focus {
       outline: none; }
     .main-input-label, .main-input-holder {
-      width: 1.4rem;
+      width: 1.5rem;
       color: #fff;
       font-size: 16px;
       font-weight: 300; }
@@ -673,10 +673,11 @@ p {
     color: #fff;
     font-size: 22px; }
   .main-footer {
-    position: absolute;
-    bottom: .2rem;
+    display: none;
     width: 100%; }
     .main-footer-power {
+      margin-top: 2rem;
+      line-height: 1rem;
       text-align: center;
       color: #fff;
       font-weight: 300;

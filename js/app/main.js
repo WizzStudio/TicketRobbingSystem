@@ -22,8 +22,9 @@ define((require) => {
 	const $cardStartTime = $('#js-rush-act-startTime')
 	const $cardEndTime = $('#js-rush-act-endTime')
 	const $cardName = $('#js-rush-act-name')
-	const $cardStuNum = $('#js-rush-act-StuNum')
-	const $cardTel = $('#js-rush-act-Tel')
+	const $cardStuNum = $('#js-rush-act-stuNum')
+	const $cardTel = $('#js-rush-act-tel')
+	const $footer = $('#js-main-footer')
 
 
 	// configuration
@@ -61,6 +62,9 @@ define((require) => {
 
 	const updateInfo = (actInfo) => {
 		/* TODO 还要更新活动信息*/
+		$cardName.text('')
+		$cardStuNum.text('')
+		$cardTel.text('')
 		$cardName.text(util.getStore('name'))
 		$cardStuNum.text(util.getStore('stuNum'))
 		$cardTel.text(util.getStore('tel'))
@@ -80,6 +84,8 @@ define((require) => {
 		const showState0 = () => {
 			clearState()
 			$mainBox.show()
+			$footer.show()
+			$submitBtn.unbind('click')
 			$submitBtn.on('click', () => {
 				if (judgeParams($inputName.val(), $inputStuNum.val(), $inputTel.val()) === 'success') {
 					submitBtn.disintegrate()
@@ -97,7 +103,9 @@ define((require) => {
 			clearState()
 			updateInfo()
 			$rush.show()
+			$footer.show()
 			$rush.css('display', 'flex').css('align-items', 'center').css('flex-flow', 'column nowrap')
+			$clearBtn.unbind('click')
 			$clearBtn.on('click', () => {
 				clearBtn.disintegrate()
 				util.removeAllStore()

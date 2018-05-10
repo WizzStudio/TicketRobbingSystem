@@ -103,7 +103,7 @@ p {
   &-container {
     @include colMidBox();
     overflow: hidden;
-    padding: 1.5rem .5rem 0 .1rem;
+    padding: 1.5rem .5rem 0 .5rem;
   }
 
   &-input {
@@ -124,7 +124,7 @@ p {
       outline: none;
     }
     &-label, &-holder {
-      width: 1.4rem;
+      width: 1.5rem;
       color: $light;
       font-size: 16px;
       font-weight: 300;
@@ -149,10 +149,13 @@ p {
     //background: rgba(252,13,27,1);
   }
   &-footer {
-    position: absolute;
-    bottom: .2rem;
+    display: none;
+    //position: absolute;
+    //bottom: .2rem;
     width: 100%;
     &-power {
+      margin-top: 2rem;
+      line-height: 1rem;
       text-align: center;
       color: $light;
       font-weight: 300;
