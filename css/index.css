@@ -568,6 +568,21 @@ p {
   align-items: center;
   height: 60px; }
 
+.rush-ticket-btn {
+  margin-top: 1rem;
+  background: #ffbe33;
+  border-radius: 10px;
+  height: 2rem;
+  width: 6rem;
+  color: #fff;
+  border: none;
+  margin-bottom: .5rem; }
+
+.rushed {
+  width: 100%;
+  text-align: center;
+  display: none; }
+
 .rush {
   display: none;
   position: relative; }
@@ -580,17 +595,15 @@ p {
     font-weight: 200;
     font-size: 24px; }
   .rush-button {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    display: block;
+    display: none;
     padding: 0;
-    height: 1.4rem;
+    height: 1rem;
     width: 4rem;
     margin-top: 1rem;
     background: #2581d4;
     color: #fff;
-    font-size: 22px; }
+    font-size: 16px;
+    font-weight: 300; }
   .rush-card {
     display: flex;
     flex-flow: column nowrap;

@@ -21,6 +21,8 @@ define((require) => {
 			}
 			if (method.toUpperCase() === 'POST') {
 				baseConfig.data = data
+				baseConfig.dataType = 'json'
+				baseConfig.contentType = 'application/json'
 			}
 			ajax(baseConfig)
 		})
@@ -32,8 +34,12 @@ define((require) => {
 	}
 
 	// 抢票
-	const rushTicket = () => {
-		return request('/tickets', 'post')
+	const rushTicket = (stuName, stuNumber, tel) => {
+		return request('/tickets', 'post', {
+			stuName: stuName,
+			stuId: stuNumber,
+			phoneNumber: tel
+		})
 	}
 
 	// 查询抢票结果
@@ -44,6 +50,7 @@ define((require) => {
 	return {
 		sayHello: () => {
 			return request('/test', 'get')
-		}
+		},
+		rushTicket
 	}
 })

@@ -20,6 +20,24 @@ p {
   height: 60px;
 }
 
+.rush-ticket-btn {
+  margin-top: 1rem;
+  background: $yellow;
+  border-radius: 10px;
+  height: 2rem;
+  width: 6rem;
+  color: $light;
+  border: none;
+  margin-bottom: .5rem;
+}
+
+.rushed{
+  width: 100%;
+  text-align: center;
+  display: none;
+}
+
+
 .rush {
   display: none;
   position: relative;
@@ -33,15 +51,16 @@ p {
     font-size: 24px;
   }
   &-button {
-    @include rowMidBox();
-    display: block;
+    //@include rowMidBox();
+    display: none;
     padding: 0;
-    height: 1.4rem;
+    height: 1rem;
     width: 4rem;
     margin-top: 1rem;
     background: $blue;
     color: $light;
-    font-size: 22px;
+    font-size: 16px;
+    font-weight: 300;
   }
   &-card {
     @include colMidBox();

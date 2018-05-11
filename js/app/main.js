@@ -25,6 +25,8 @@ define((require) => {
 	const $cardStuNum = $('#js-rush-act-stuNum')
 	const $cardTel = $('#js-rush-act-tel')
 	const $footer = $('#js-main-footer')
+	const $rushBtn = $('.js-rush-button')
+	const $rushedText = $('.js-rushed-text')
 
 	// configuration
 	const btnDurationTime = 600
@@ -58,6 +60,7 @@ define((require) => {
 		return 'success'
 	}
 
+	// 更新票信息
 	const updateInfo = (actInfo) => {
 		/* TODO 还要更新活动信息*/
 		$cardName.text('')
@@ -68,16 +71,56 @@ define((require) => {
 		$cardTel.text(util.getStore('tel'))
 	}
 
+	// 在抢票时间内无法清除信息，按钮变为抢票
+	const judgeRushTime = () => {
+		/* TODO 判断是否在抢票时间内 */
+		if (parseInt(util.getStore('state')) === 1 && 1) {
+			util.setStore('state', '2')
+			judgeState()
+		}
+	}
+
+	// 重置按钮
+	const resetBtn = () => {
+		$('.particles-wrapper').css('visibility', 'visible').css('transform', 'translateX(0)')
+		$('.particles-wrapper>button').css('transform', 'translateX(0)')
+	}
+
+	// 清除输入框内容
+	const clearInput = () => {
+		$inputName.val('')
+		$inputStuNum.val('')
+		$inputTel.val('')
+	}
+
+	// Eventlistener
+	// 清除信息
+	$clearBtn.on('click', () => {
+		clearBtn.disintegrate()
+		util.removeAllStore()
+		util.setStore('state', '0')
+		window.setTimeout(() => {
+			al.showSuccessMessage('清除成功！')
+			resetBtn()
+			clearInput()
+			judgeState()
+		}, btnDurationTime)
+	})
+
+	// 抢票
+	$rushBtn.on('click', () => {
+		/* TODO  发送抢票请求 */
+		al.showSuccessMessage('抢票成功')
+		util.setStore('state', '3')
+		judgeState()
+	})
+
 	// 校验当前客户端状态 0 新用户 1 存储了信息的用户
 	const judgeState = () => {
 		const clearState = () => {
 			$mainBox.hide()
 			$loader.hide()
 			$rush.hide()
-		}
-		const resetBtn = () => {
-			$('.particles-wrapper').css('visibility', 'visible').css('transform', 'translateX(0)')
-			$('.particles-wrapper>button').css('transform', 'translateX(0)')
 		}
 		const showState0 = () => {
 			clearState()
@@ -100,29 +143,63 @@ define((require) => {
 		const showState1 = () => {
 			clearState()
 			updateInfo()
-			$rush.show()
-			$footer.show()
+			judgeRushTime()
+			$clearBtn.css('display', 'flex').css('align-items', 'center').css('justify-content', 'center')
 			$rush.css('display', 'flex').css('align-items', 'center').css('flex-flow', 'column nowrap')
-			$clearBtn.unbind('click')
-			$clearBtn.on('click', () => {
-				clearBtn.disintegrate()
-				util.removeAllStore()
-				util.setStore('state', '0')
-				window.setTimeout(() => {
-					al.showSuccessMessage('清除成功！')
-					resetBtn()
-					judgeState()
-				}, btnDurationTime)
+			$clearBtn.show()
+			$footer.show()
+			$rush.show()
+			// $clearBtn.unbind('click')
+			// $clearBtn.on('click', () => {
+			// 	clearBtn.disintegrate()
+			// 	util.removeAllStore()
+			// 	util.setStore('state', '0')
+			// 	window.setTimeout(() => {
+			// 		al.showSuccessMessage('清除成功！')
+			// 		resetBtn()
+			// 		judgeState()
+			// 	}, btnDurationTime)
+			//
+			// })
+		}
+		const showState2 = () => {
+			clearState()
+			updateInfo()
+			$rush.css('display', 'flex').css('align-items', 'center').css('flex-flow', 'column nowrap')
+			$rushBtn.css('display', 'flex').css('align-items', 'center').css('justify-content', 'center')
+			$clearBtn.show()
+			$rushBtn.show()
+			$footer.show()
+			// $rushBtn.unbind('click')
+			// $rushBtn.on('click', () => {
+			// 	/* TODO  发送抢票请求 */
+			// 	al.showSuccessMessage('抢票成功')
+			// 	util.setStore('state', '3')
+			// 	judgeState()
+			// })
+		}
+		const showState3 = () => {
+			clearState()
+			$rush.css('display', 'flex').css('align-items', 'center').css('flex-flow', 'column nowrap')
+			updateInfo()
+			$rush.show()
+			$clearBtn.hide()
+			$rushBtn.hide()
+			$rushedText.show()
 
-			})
+			/* DEV */
+			$clearBtn.show()
 		}
 		let stateHook = {
 			'0': showState0,
-			'1': showState1
+			'1': showState1,
+			'2': showState2,
+			'3': showState3
 		}
 		if (!util.getStore('state')) return showState0()
 		stateHook[util.getStore('state')]()
 	}
+
 
 	const _init = () => {
 		util.autoCalcHeight($main) // 计算高度
@@ -150,5 +227,6 @@ define((require) => {
 	// $mainBox.show()
 	// $loader.hide()
 
+	// request.rushTicket('s','1','21')
 	_init()
 });

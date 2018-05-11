@@ -1,4 +1,3 @@
-
 fis.match('*.{css,js,png,ico,jpeg}', {
   useHash: false,
   deploy: fis.plugin('http-push', {
