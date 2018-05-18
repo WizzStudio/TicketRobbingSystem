@@ -6,3 +6,26 @@
   &-login{}
   &-main{}
 }
+
+.modal{
+
+  &-addAct {
+    display: none;
+    .mg20 {
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+    .input-group,.message {
+      margin-left: 20px;
+      margin-top: 20px;
+      width: 400px;
+    }
+    .btn-group {
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+  }
+  &-showAct {
+    display: none;
+  }
+}

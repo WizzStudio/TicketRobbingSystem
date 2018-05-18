@@ -195,3 +195,18 @@
 /* 字体 */
 /* 宽度 */
 /* 圆角 */
+.modal-addAct {
+  display: none; }
+  .modal-addAct .mg20 {
+    margin-left: 20px;
+    margin-top: 20px; }
+  .modal-addAct .input-group, .modal-addAct .message {
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 400px; }
+  .modal-addAct .btn-group {
+    margin-left: 20px;
+    margin-top: 20px; }
+
+.modal-showAct {
+  display: none; }

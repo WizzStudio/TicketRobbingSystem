@@ -4,6 +4,8 @@ define((require) => {
 	const al = require('../app/dialog')
 	const util = require('../app/utils')
 	const renderFn = require('./render')
+	const modals = require('./modals')
+
 
 	// elements
 	const $actTable = $('#js-actTable').children('tbody')
@@ -21,4 +23,10 @@ define((require) => {
 			console.log($(e.target).attr('data-id'))
 		}
 	})
+
+	const init = () => {
+		modals.showActModal()
+	}
+
+	init()
 })
