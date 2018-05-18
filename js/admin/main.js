@@ -25,7 +25,9 @@ define((require) => {
 	})
 
 	const init = () => {
-		modals.showActModal()
+		$addActBtn.on('click', () => {
+			modals.showActModal();
+		})
 	}
 
 	init()

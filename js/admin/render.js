@@ -37,6 +37,7 @@ define(require => {
 		}
 	}
 
+
 	const init = () => {
 		renderTable()
 	}
