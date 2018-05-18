@@ -14,12 +14,12 @@ define((require) => {
 				error: err => {
 					dialog.showError(`${err.status} ${err.statusText}`, '服务器开小差了~')
 					reject({
-						status:err.status,
+						status: err.status,
 						statusText: err.statusText
 					})
 				}
 			}
-			if (method.toUpperCase() === 'POST') {
+			if (method.toUpperCase() === 'POST' || method.toUpperCase() === 'DELETE') {
 				baseConfig.data = data
 				baseConfig.dataType = 'json'
 				baseConfig.contentType = 'application/json'
@@ -30,6 +30,16 @@ define((require) => {
 
 	// 获取活动详情（时间/标题/背景图..)
 	const getActDetail = () => {
+		return request()
+	}
+
+	// 查询所有活动
+	const getAllAct = () => {
+		return request()
+	}
+
+	// 查询单条活动信息
+	const getAct = (id) => {
 		return request()
 	}
 
@@ -47,10 +57,48 @@ define((require) => {
 		return request('/tickets', 'get')
 	}
 
+	// 短信发送接口
+	const sendMessage = () => {
+		return request('/message')
+	}
+
+	const loginAdmin = (userName, password) => {
+		return request('/login', 'post', {userName, password})
+	}
+
+	const registerAdmin = (userName, password) => {
+		return request('/user', 'post', {userName, password})
+	}
+
+	const addAct = (actInfo) => {
+		return request('/activity','post', {
+			Id: actInfo.id,
+			begTime: actInfo.begTime,
+			endTime: actInfo.endTime,
+			actStartTime: actInfo.actStartTime,
+			Content: actInfo.content,
+			name: actInfo.name,
+			description: actInfo.description,
+			theme: actInfo.theme,
+			tickets: actInfo.tickets,
+			params: actInfo.params
+		})
+	}
+
+	const deleteAct = (actId) => {
+		request('/activity', 'delete', {Id: actId})
+	}
+
 	return {
-		sayHello: () => {
-			return request('/test', 'get')
-		},
-		rushTicket
+		rushTicket,
+		getActDetail,
+		getAllAct,
+		sendMessage,
+		getRushResult,
+		registerAdmin,
+		loginAdmin,
+		deleteAct,
+		addAct,
+		getAct
 	}
 })

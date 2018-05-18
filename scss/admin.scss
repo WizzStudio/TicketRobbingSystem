@@ -1,2 +1,8 @@
 @import "utils";
 @import "variables";
+
+
+.admin{
+  &-login{}
+  &-main{}
+}
