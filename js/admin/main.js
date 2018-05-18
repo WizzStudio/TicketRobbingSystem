@@ -7,6 +7,7 @@ define((require) => {
 
 	// elements
 	const $actTable = $('#js-actTable').children('tbody')
+	const $addActBtn = $('#js-addAct')
 
 	// listener
 	$actTable.find('td').on('click', (e) => {

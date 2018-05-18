@@ -7,8 +7,7 @@ define(require => {
 
 	// templates
 	const tableItem = data => (
-		`
-			<tr>
+		`<tr>
 			<td>${data.name}</td>
      <td>${data.actStartTime}</td>
      <td>${data.tickets}</td>
@@ -24,7 +23,7 @@ define(require => {
 	)
 
 	// 渲染表单
-	const renderTable = data => {
+	const renderTable = (dataArray = []) => {
 		$actTable.empty()
 		$actTable.append(`<tr>
                     <td>活动名称</td>
@@ -33,8 +32,8 @@ define(require => {
                     <td>活动链接</td>
                     <td>操作</td>
                 </tr>`)
-		for (let i of [1, 1, 1]) {
-			$actTable.append(tableItem({name: 'ha', actStartTime: '2008-12', tickets: 12, actURL: 'www.baidu.com', id: '3'}))
+		for (let item of dataArray) {
+			$actTable.append(tableItem(item))
 		}
 	}
 
