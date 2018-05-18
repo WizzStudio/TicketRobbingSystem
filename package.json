@@ -5,8 +5,10 @@
   "main": "/js/app/main.js",
   "scripts": {
     "dev": " concurrently -k -p \"[{name}]\" -n \"sass,fis\" -c \"green.bold,cyan.bold\" \"npm run watch-sass\"  \"npm run fis\"",
+    "devadmin": " concurrently -k -p \"[{name}]\" -n \"sass,fis\" -c \"green.bold,cyan.bold\" \"npm run watch-sass-admin\"  \"npm run fis\"",
     "depoly": "fis3 release",
     "watch-sass": "node-sass -w scss/index.scss css/index.css --style compact",
+    "watch-sass-admin": "node-sass -w scss/admin.scss css/admin.css --style compact",
     "fis": "fis3 release -wL"
   },
   "author": "acery1",

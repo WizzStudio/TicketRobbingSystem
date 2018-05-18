@@ -562,11 +562,16 @@ p {
   display: none;
   position: absolute;
   bottom: -3rem;
+  right: 14%;
+  height: 60px;
+  width: 120px;
+  font-size: 18px;
+  font-weight: 500;
+  background: #b3b3b3;
   display: flex;
   flex-flow: nowrap column;
   justify-content: center;
-  align-items: center;
-  height: 60px; }
+  align-items: center; }
 
 .rush-ticket-btn {
   margin-top: 1rem;
