@@ -5,7 +5,7 @@ define((require) => {
 	const util = require('../app/utils')
 	const renderFn = require('./render')
 	const modals = require('./modals')
-
+	const dp = require('DP')
 	// elements
 	const $actTable = $('#js-actTable').children('tbody')
 	const $addActBtn = $('#js-addAct')
@@ -13,6 +13,21 @@ define((require) => {
 	const $main = $('#js-admin-main')
 	const $name = $('#js-admin-name')
 	const $loginBtn = $('#js-btn-login')
+
+	// datePicker
+	/* TODO 使得下面代码生效*/
+	// $('#act-startTime').datepicker({
+	// 	language: "zh-CN",
+	// 	calendarWeeks: true
+	// });
+	// $('#act-rushStartTime').datepicker({
+	// 	language: "zh-CN",
+	// 	calendarWeeks: true
+	// });
+	// $('#act-rushEndTime').datepicker({
+	// 	language: "zh-CN",
+	// 	calendarWeeks: true
+	// });
 
 	// 判断是否登录
 	const isLogin = () => {
@@ -30,7 +45,7 @@ define((require) => {
 		clearState()
 		util.removeAllSession()
 		$name.html('登录')
-		// util.changeBg($body, 'http://cdn.helloyzy.cn/react.png')
+		// util.changeBg($body, 'http://cdn.helloyzy.cn/react.png') // DEV 用于更换登录背景图
 		$body.css('height', window.innerHeight)
 		$login.find('.l-box__allMid').css('height', window.innerHeight - 200)
 		$login.show()
@@ -66,7 +81,6 @@ define((require) => {
 		$name.on('click', (e) => {
 			e.preventDefault()
 			state0()
-			// changeState()
 		}) // 用户名点击事件
 		$loginBtn.on('click', () => {
 			let userName = $('#js-input-username').val()
