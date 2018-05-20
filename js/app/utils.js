@@ -84,6 +84,25 @@ define((require) => {
 		};
 	};
 
+	const removeAllSession = () => {
+		for (let i of Object.keys(window.sessionStorage)) {
+			window.sessionStorage.removeItem(i)
+		}
+	}
+
+	const getSession = name => {
+		if (!name) return;
+		return window.sessionStorage.getItem(name);
+	}
+
+	const setSession = (name, content) => {
+		if (!name) return;
+		if (typeof content !== 'string') {
+			content = JSON.stringify(content);
+		}
+		window.sessionStorage.setItem(name, content);
+	}
+
 	return {
 		autoCalcHeight,
 		changeBg,
@@ -93,6 +112,9 @@ define((require) => {
 		setStore,
 		removeAllStore,
 		getStore,
-		debounce
+		debounce,
+		getSession,
+		setSession,
+		removeAllSession
 	}
 });

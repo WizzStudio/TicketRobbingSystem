@@ -3,8 +3,12 @@
 
 
 .admin{
-  &-login{}
-  &-main{}
+  &-login{
+    display: none;
+  }
+  &-main{
+    display: none;
+  }
 }
 
 .modal{

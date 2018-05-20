@@ -195,6 +195,12 @@
 /* 字体 */
 /* 宽度 */
 /* 圆角 */
+.admin-login {
+  display: none; }
+
+.admin-main {
+  display: none; }
+
 .modal-addAct {
   display: none; }
   .modal-addAct .mg20 {
