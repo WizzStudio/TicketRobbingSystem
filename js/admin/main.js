@@ -12,6 +12,7 @@ define((require) => {
 	const $login = $('#js-admin-login')
 	const $main = $('#js-admin-main')
 	const $name = $('#js-admin-name')
+	const $loginBtn = $('#js-btn-login')
 
 	// 判断是否登录
 	const isLogin = () => {
@@ -25,15 +26,20 @@ define((require) => {
 
 	// 未登录
 	const state0 = () => {
+		let $body = $('body')
 		clearState()
 		util.removeAllSession()
+		$name.html('登录')
+		// util.changeBg($body, 'http://cdn.helloyzy.cn/react.png')
+		$body.css('height', window.innerHeight)
+		$login.find('.l-box__allMid').css('height', window.innerHeight - 200)
 		$login.show()
 	}
 
 	// 登录过
 	const state1 = () => {
 		clearState()
-		$name.val(util.getSession('login'))
+		$name.html(util.getSession('login'))
 		$main.show()
 	}
 
@@ -59,10 +65,25 @@ define((require) => {
 		}) // 新增活动按钮
 		$name.on('click', (e) => {
 			e.preventDefault()
+			state0()
+			// changeState()
+		}) // 用户名点击事件
+		$loginBtn.on('click', () => {
+			let userName = $('#js-input-username').val()
+			let password = $('#js-input-password').val()
+			if (!userName || !password) return al.showErrorMessage('用户名或密码不能为空')
+			request.loginAdmin(userName, password).then(() => {
+				util.setSession('login', `${userName}，退出请点击`)
+			})
+
+			/* DEV */
+			util.setSession('login', `Acery，退出请点击`)
+			//
+
 			changeState()
 		})
-
 		changeState()
+		$('#js-loader').hide()
 	}
 
 	init()
