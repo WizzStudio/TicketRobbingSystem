@@ -1,11 +1,10 @@
-define((require) => {
-	const $ = require('jquery')
-	const request = require('../app/request')
-	const al = require('../app/dialog')
-	const util = require('../app/utils')
-	const renderFn = require('./render')
-	const modals = require('./modals')
-	const dp = require('DP')
+define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render','./modals','bootstrap','DP_CN'],($, request, al, util, renderFn, modals) => {
+	// const $ = require('jquery')
+	// const request = require('../app/request')
+	// const al = require('../app/dialog')
+	// const util = require('../app/utils')
+	// const renderFn = require('./render')
+	// const modals = require('./modals')
 	// elements
 	const $actTable = $('#js-actTable').children('tbody')
 	const $addActBtn = $('#js-addAct')

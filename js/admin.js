@@ -1,7 +1,18 @@
 requirejs.config({
 	baseUrl: '/js/lib',
 	paths: {
-		app: '../admin' // relative URL based on baseUrl
+		app: '../admin/main', // relative URL based on baseUrl
+	},
+	shim: {
+		'bootstrap': {
+			deps: ['jquery']
+		},
+		'DP': {
+			deps: ['jquery','bootstrap']
+		},
+		'DP_CN': {
+			deps: ['jquery','bootstrap','DP']
+		}
 	}
 });
 
