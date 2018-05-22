@@ -2,7 +2,7 @@
 define((require) => {
 	const ajax = require('jquery').ajax
 	const dialog = require('./dialog')
-	const baseUrl = 'http://149.28.72.142:8080'
+	const baseUrl = 'http://47.94.212.99:8080'
 	const request = (url = '/', method = 'get', data = {}) => {
 		return new Promise((resolve, reject) => {
 			let baseConfig = {
@@ -20,9 +20,8 @@ define((require) => {
 				}
 			}
 			if (method.toUpperCase() === 'POST' || method.toUpperCase() === 'DELETE') {
-				baseConfig.data = data
-				baseConfig.dataType = 'json'
-				baseConfig.contentType = 'application/json'
+				baseConfig.data = JSON.stringify(data)
+				baseConfig.contentType = 'application/json; charset=utf-8'
 			}
 			ajax(baseConfig)
 		})
@@ -40,8 +39,11 @@ define((require) => {
 
 	// 查询单条活动信息
 	const getAct = (id) => {
-		return request()
+		return request('', 'post', {
+			actId: id
+		})
 	}
+
 
 	// 抢票
 	const rushTicket = (stuName, stuNumber, tel) => {
@@ -71,7 +73,7 @@ define((require) => {
 	}
 
 	const addAct = (actInfo) => {
-		return request('/activity','post', {
+		return request('/activity', 'post', {
 			Id: actInfo.id,
 			begTime: actInfo.begTime,
 			endTime: actInfo.endTime,

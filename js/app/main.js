@@ -1,32 +1,34 @@
 define((require) => {
+	/*TODO 【对接getAct接口】【前端也做一个时间判断】【恶意用户测试】*/
+
 	// dependencies
 	const $ = require('jquery')
-	const validator = require('validator')
-	const Particles = require('particles')
-	const request = require('./request')
-	const al = require('./dialog')
-	const util = require('./utils')
+		, validator = require('validator')
+		, Particles = require('particles')
+		, request = require('./request')
+		, al = require('./dialog')
+		, util = require('./utils')
 
 	// Element
 	const $main = $('#js-main')
-	const $mainTitle = $('#js-act-title')
-	const $mainBox = $('.js-mainBox')
-	const $loader = $('#js-loader')
-	const $inputName = $('#js-input-name')
-	const $inputStuNum = $('#js-input-stuNum')
-	const $inputTel = $('#js-input-tel')
-	const $submitBtn = $('.js-submit-button')
-	const $clearBtn = $('.js-clear-button')
-	const $rush = $('#js-rush')
-	const $cardTitle = $('#js-rush-act-title')
-	const $cardStartTime = $('#js-rush-act-startTime')
-	const $cardEndTime = $('#js-rush-act-endTime')
-	const $cardName = $('#js-rush-act-name')
-	const $cardStuNum = $('#js-rush-act-stuNum')
-	const $cardTel = $('#js-rush-act-tel')
-	const $footer = $('#js-main-footer')
-	const $rushBtn = $('.js-rush-button')
-	const $rushedText = $('.js-rushed-text')
+		, $mainTitle = $('#js-act-title')
+		, $mainBox = $('.js-mainBox')
+		, $loader = $('#js-loader')
+		, $inputName = $('#js-input-name')
+		, $inputStuNum = $('#js-input-stuNum')
+		, $inputTel = $('#js-input-tel')
+		, $submitBtn = $('.js-submit-button')
+		, $clearBtn = $('.js-clear-button')
+		, $rush = $('#js-rush')
+		, $cardTitle = $('#js-rush-act-title')
+		, $cardStartTime = $('#js-rush-act-startTime')
+		, $cardEndTime = $('#js-rush-act-endTime')
+		, $cardName = $('#js-rush-act-name')
+		, $cardStuNum = $('#js-rush-act-stuNum')
+		, $cardTel = $('#js-rush-act-tel')
+		, $footer = $('#js-main-footer')
+		, $rushBtn = $('.js-rush-button')
+		, $rushedText = $('.js-rushed-text')
 
 	// configuration
 	const btnDurationTime = 600
@@ -38,6 +40,19 @@ define((require) => {
 	const clearBtn = new Particles('button.js-clear-button', {
 		duration: btnDurationTime
 	})
+
+	// 查询URL参数
+	const getQueryVariable = (variable) => {
+		let query = window.location.search.substring(1);
+		let vars = query.split("&");
+		for (let i = 0; i < vars.length; i++) {
+			let pair = vars[i].split("=");
+			if (pair[0] == variable) {
+				return pair[1];
+			}
+		}
+		return (false);
+	}
 
 	// 改变主题
 	const changeTheme = (theme) => {
@@ -92,28 +107,6 @@ define((require) => {
 		$inputStuNum.val('')
 		$inputTel.val('')
 	}
-
-	// Eventlistener
-	// 清除信息
-	$clearBtn.on('click', () => {
-		clearBtn.disintegrate()
-		util.removeAllStore()
-		util.setStore('state', '0')
-		window.setTimeout(() => {
-			al.showSuccessMessage('清除成功！')
-			resetBtn()
-			clearInput()
-			judgeState()
-		}, btnDurationTime)
-	})
-
-	// 抢票
-	$rushBtn.on('click', () => {
-		/* TODO  发送抢票请求 */
-		al.showSuccessMessage('抢票成功')
-		util.setStore('state', '3')
-		judgeState()
-	})
 
 	// 校验当前客户端状态 0 新用户 1 存储了信息的用户
 	const judgeState = () => {
@@ -190,11 +183,15 @@ define((require) => {
 			/* DEV */
 			$clearBtn.show()
 		}
+		const showStateError = () => {
+			clearState()
+		}
 		let stateHook = {
 			'0': showState0,
 			'1': showState1,
 			'2': showState2,
-			'3': showState3
+			'3': showState3,
+			'-1': showStateError
 		}
 		if (!util.getStore('state')) return showState0()
 		stateHook[util.getStore('state')]()
@@ -202,18 +199,67 @@ define((require) => {
 
 
 	const _init = () => {
+		if (!getQueryVariable('actid')) {
+			/* BAD 这个流程判断可以做到渲染DOM和加载require.js之前*/
+			util.setStore('state', '-1')
+			judgeState()
+			util.removeAllStore()
+			al.showErrorMessage('没有该活动！')
+			setTimeout(()=>{
+				$('body').empty()
+			},2000)
+			return false
+		}
+
+		// 防止不同活动间的冲突数据问题
+		if (util.getStore('actId') !== getQueryVariable('actid')) {
+			util.removeAllStore()
+		}
+		util.setStore('actId', getQueryVariable('actid'))
+
+		// request.getAct(getQueryVariable('actid'))
+		// 	.then(res => {
+		//
+		// 	})
+		// 抢票
+		$rushBtn.on('click', util.debounce(() => {
+			/* DEV 压力测试*/
+			//
+			// for(let i =0; i<600; i++ ) {
+			// 	request.rushTicket(Math.random().toString(),Math.random().toString(),Math.random().toString())
+			// }
+
+			request.rushTicket(util.getStore('name'), util.getStore('stuNum'), util.getStore('tel'))
+				.then(res => {
+					if (res.result) {
+						return al.showErrorMessage(res.des)
+					}
+					al.showSuccessMessage('抢票成功')
+					util.setStore('state', '3')
+					judgeState()
+				})
+				.catch(err => {
+					console.error('错误')
+				})
+		}, 1000))
+		// 清除信息
+		$clearBtn.on('click', () => {
+			clearBtn.disintegrate()
+			util.removeAllStore()
+			util.setStore('state', '0')
+			window.setTimeout(() => {
+				al.showSuccessMessage('清除成功！')
+				resetBtn()
+				clearInput()
+				judgeState()
+			}, btnDurationTime)
+		})
 		util.autoCalcHeight($main) // 计算高度
 		changeTheme('light') // 改变主题
 		util.changeText($mainTitle, '6月15日，相约校歌赛') // 改变活动标题
 		judgeState() // 判断状态
 		// util.changeBg($('#js-main'),'/assets/devPics/bg.jpeg')
 	}
-
-	// request.sayHello()
-	// al.showHello()
-	// al.showErrorMessage('fuck')
-
-
 	// $submitBtn.on('click', () => {
 	// 	if (judgeParams($inputName.val(), $inputStuNum.val(), $inputTel.val()) === 'success') {
 	// 		submitBtn.disintegrate()
@@ -222,11 +268,6 @@ define((require) => {
 
 
 	// util.changeBg($('#js-main'),'https://avatars2.githubusercontent.com/u/768052?v=4')
-	// $('#js-main').css('height', '10rem')
 
-	// $mainBox.show()
-	// $loader.hide()
-
-	// request.rushTicket('s','1','21')
 	_init()
 });
