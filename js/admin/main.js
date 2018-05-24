@@ -5,6 +5,7 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 	// const util = require('../app/utils')
 	// const renderFn = require('./render')
 	// const modals = require('./modals')
+	/* TODO [登录后逻辑] 【获取活动列表】 【添加活动】 【删除活动】 【修改活动】*/
 	// elements
 	const $actTable = $('#js-actTable').children('tbody')
 	const $addActBtn = $('#js-addAct')
@@ -13,20 +14,6 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 	const $name = $('#js-admin-name')
 	const $loginBtn = $('#js-btn-login')
 
-	// datePicker
-	/* TODO 使得下面代码生效*/
-	// $('#act-startTime').datepicker({
-	// 	language: "zh-CN",
-	// 	calendarWeeks: true
-	// });
-	// $('#act-rushStartTime').datepicker({
-	// 	language: "zh-CN",
-	// 	calendarWeeks: true
-	// });
-	// $('#act-rushEndTime').datepicker({
-	// 	language: "zh-CN",
-	// 	calendarWeeks: true
-	// });
 
 	// 判断是否登录
 	const isLogin = () => {
@@ -85,15 +72,19 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 			let userName = $('#js-input-username').val()
 			let password = $('#js-input-password').val()
 			if (!userName || !password) return al.showErrorMessage('用户名或密码不能为空')
-			request.loginAdmin(userName, password).then(() => {
+			request.loginAdmin(userName, password).then((res) => {
+				if (res.result) {
+					console.log(res)
+				 return al.showErrorMessage(res.des)
+				}
 				util.setSession('login', `${userName}，退出请点击`)
+				changeState()
 			})
 
 			/* DEV */
 			util.setSession('login', `Acery，退出请点击`)
-			//
-
 			changeState()
+			/**/
 		})
 		changeState()
 		$('#js-loader').hide()

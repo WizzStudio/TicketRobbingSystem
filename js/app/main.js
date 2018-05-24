@@ -70,7 +70,6 @@ define((require) => {
 			.then(res => {
 				let actInfo = res.actinfo
 				let actAtr  = res.actatr
-				console.log(actAtr.seckilltime)
 				/*TODO 解析时间戳*/
 				util.changeText($mainTitle, actInfo.name)
 				util.changeText($cardTitle,actInfo.name)
@@ -96,11 +95,7 @@ define((require) => {
 	}
 
 	// 更新票信息
-	const updateInfo = (actInfo) => {
-		/* TODO 还要更新活动信息*/
-		$cardName.text('')
-		$cardStuNum.text('')
-		$cardTel.text('')
+	const updateInfo = () => {
 		$cardName.text(util.getStore('name'))
 		$cardStuNum.text(util.getStore('stuNum'))
 		$cardTel.text(util.getStore('tel'))
@@ -218,7 +213,7 @@ define((require) => {
 		stateHook[util.getStore('state')]()
 	}
 
-	// main 
+	// main
 	const _init = () => {
 		if (!getQueryVariable('actid')) {
 			/* BAD 这个流程判断可以做到渲染DOM和加载require.js之前*/

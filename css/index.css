@@ -648,7 +648,6 @@ p {
 .main {
   overflow: hidden;
   position: relative;
-  background: url("/assets/devPics/bg.png") center no-repeat;
   background-size: cover; }
   .main-title {
     padding-top: 1.6rem;

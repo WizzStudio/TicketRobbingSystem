@@ -8,7 +8,11 @@ define((require) => {
 			let baseConfig = {
 				url: baseUrl + url,
 				method: method,
-				success: (data) => {
+				success: (data, _, xhr) => {
+					// console.log(xhr.getResponseHeader('Authorization'))
+					if (xhr.getResponseHeader('Authorization')) {
+						data.token = xhr.getResponseHeader('Authorization')
+					}
 					resolve(data)
 				},
 				error: err => {
@@ -19,6 +23,13 @@ define((require) => {
 					})
 				}
 			}
+
+			if (window.sessionStorage.getItem('token')) {
+				console.log('存储token', window.sessionStorage.getItem('token'))
+				baseConfig['headers'] = {
+					Authorization: window.sessionStorage.getItem('token')
+				}
+			}
 			if (method.toUpperCase() === 'POST' || method.toUpperCase() === 'DELETE') {
 				baseConfig.data = JSON.stringify(data)
 				baseConfig.contentType = 'application/json; charset=utf-8'
@@ -27,6 +38,8 @@ define((require) => {
 		})
 	}
 
+	/*TODO 【修改活动接口】 【短信接口逻辑需要重审核】 【获取单条活动信息的接口有疑问】*/
+
 	// 获取活动详情（时间/标题/背景图..)
 	const getActDetail = () => {
 		return request()
@@ -34,7 +47,7 @@ define((require) => {
 
 	// 查询所有活动
 	const getAllAct = () => {
-		return request()
+		return request(`/usertbls`, 'get')
 	}
 
 	// 查询单条活动信息
