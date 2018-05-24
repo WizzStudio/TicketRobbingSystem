@@ -79,16 +79,28 @@
         <input id="act-desc" type="text" class="form-control" placeholder="请输入活动描述">
     </div>
     <div class="input-group">
-        <span class="input-group-addon">活动时间</span>
-        <input id="act-startTime" type="text" class="form-control" placeholder="请选择活动时间">
+        <span class="input-group-addon">活动开始日期</span>
+        <input id="act-startDate"  type="date" class="form-control" placeholder="请选择活动开始日期">
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon">活动开始时间</span>
+        <input id="act-startTime" type="time" class="form-control" placeholder="请输入活动开始时间">
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon">活动结束日期</span>
+        <input id="act-endDate" type="date" class="form-control" placeholder="请输入活动结束日期">
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon">活动结束时间</span>
+        <input id="act-endTime" type="time" class="form-control" placeholder="请输入活动结束时间">
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon">抢票开始日期</span>
+        <input id="rush-startDate" type="date" class="form-control" placeholder="请输入抢票开始日期">
     </div>
     <div class="input-group">
         <span class="input-group-addon">抢票开始时间</span>
-        <input id="act-rushStartTime" type="text" class="form-control" placeholder="请输入活动描述">
-    </div>
-    <div class="input-group">
-        <span class="input-group-addon">抢票结束时间</span>
-        <input id="act-rushEndTime" type="text" class="form-control" placeholder="请输入活动描述">
+        <input id="rush-startTime" type="time" class="form-control" placeholder="请输入抢票开始时间">
     </div>
     <div class="input-group">
         <span class="input-group-addon">活动背景图URL</span>
@@ -96,7 +108,7 @@
     </div>
     <div class="input-group">
         <span class="input-group-addon">发票数</span>
-        <input id="act-tickets" type="number" class="form-control" placeholder="请输入活动背景图URL" maxlength="5">
+        <input id="act-tickets" type="number" class="form-control" placeholder="请输入发票数" maxlength="5">
     </div>
     <h4 class="mg20">短信配置</h4>
     <textarea id="act-message" class="form-control message" rows="3" style="resize: none" maxlength="140"></textarea>
