@@ -39,9 +39,7 @@ define((require) => {
 
 	// 查询单条活动信息
 	const getAct = (id) => {
-		return request('', 'post', {
-			actId: id
-		})
+		return request(`/activity?id=${id}`, 'get')
 	}
 
 

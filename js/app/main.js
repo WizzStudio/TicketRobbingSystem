@@ -63,6 +63,21 @@ define((require) => {
 		$('.js-theme-config').addClass(themeMap[theme])
 	}
 
+	// 渲染活动详情i
+	const renderAct = () => {
+		request.getAct(getQueryVariable('actid'))
+			.then(res => {
+				let actInfo = res.actinfo
+				let actAtr  = res.actatr
+				/*TODO 需要绑定 theme 解析时间戳*/
+				util.changeText($mainTitle, actInfo.name)
+				util.changeText($('#js-rush-act-title'),actInfo.name)
+				util.changeText($('#js-act-des'), actInfo.des)
+				util.changeBg($('#js-main'), actInfo.imgurl)
+
+			})
+	}
+
 	// 校验填写参数
 	const judgeParams = (name, stuNum, tel) => {
 		if (!name.length || name.length > 10) return al.showErrorMessage('请填写正确的姓名')
@@ -205,9 +220,9 @@ define((require) => {
 			judgeState()
 			util.removeAllStore()
 			al.showErrorMessage('没有该活动！')
-			setTimeout(()=>{
+			setTimeout(() => {
 				$('body').empty()
-			},2000)
+			}, 2000)
 			return false
 		}
 
@@ -215,20 +230,19 @@ define((require) => {
 		if (util.getStore('actId') !== getQueryVariable('actid')) {
 			util.removeAllStore()
 		}
+
+		// 存储活动id
 		util.setStore('actId', getQueryVariable('actid'))
 
-		// request.getAct(getQueryVariable('actid'))
-		// 	.then(res => {
-		//
-		// 	})
+		// 渲染活动详情数据
+		renderAct()
+
 		// 抢票
 		$rushBtn.on('click', util.debounce(() => {
 			/* DEV 压力测试*/
-			//
 			// for(let i =0; i<600; i++ ) {
 			// 	request.rushTicket(Math.random().toString(),Math.random().toString(),Math.random().toString())
 			// }
-
 			request.rushTicket(util.getStore('name'), util.getStore('stuNum'), util.getStore('tel'))
 				.then(res => {
 					if (res.result) {
