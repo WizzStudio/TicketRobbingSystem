@@ -1,10 +1,11 @@
 define((require) => {
-	/*TODO 【对接getAct接口】【前端也做一个时间判断】【恶意用户测试】*/
+	/*TODO 【前端也做一个时间判断】【恶意用户测试】*/
 
 	// dependencies
 	const $ = require('jquery')
 		, validator = require('validator')
 		, Particles = require('particles')
+		, dayjs = require('dayjs')
 		, request = require('./request')
 		, al = require('./dialog')
 		, util = require('./utils')
@@ -69,12 +70,16 @@ define((require) => {
 			.then(res => {
 				let actInfo = res.actinfo
 				let actAtr  = res.actatr
-				/*TODO 需要绑定 theme 解析时间戳*/
+				console.log(actAtr.seckilltime)
+				/*TODO 解析时间戳*/
 				util.changeText($mainTitle, actInfo.name)
-				util.changeText($('#js-rush-act-title'),actInfo.name)
+				util.changeText($cardTitle,actInfo.name)
 				util.changeText($('#js-act-des'), actInfo.des)
+				util.changeText($cardStartTime, dayjs(actAtr.begTime).format('YYYY-MM-DD HH:MM'))
+				util.changeText($cardEndTime, dayjs(actAtr.endTime).format('YYYY-MM-DD HH:MM'))
+				util.changeText($('#js-rush-rushStartTime'), dayjs(parseInt(actAtr.seckilltime)).format('YYYY-MM-DD HH:MM'))
 				util.changeBg($('#js-main'), actInfo.imgurl)
-
+				actInfo.theme ? changeTheme('dark') : changeTheme('light') // 1黑色 0白色
 			})
 	}
 
@@ -129,6 +134,7 @@ define((require) => {
 			$mainBox.hide()
 			$loader.hide()
 			$rush.hide()
+			$rushedText.hide()
 		}
 		const showState0 = () => {
 			clearState()
@@ -212,7 +218,7 @@ define((require) => {
 		stateHook[util.getStore('state')]()
 	}
 
-
+	// main 
 	const _init = () => {
 		if (!getQueryVariable('actid')) {
 			/* BAD 这个流程判断可以做到渲染DOM和加载require.js之前*/
@@ -269,19 +275,8 @@ define((require) => {
 			}, btnDurationTime)
 		})
 		util.autoCalcHeight($main) // 计算高度
-		changeTheme('light') // 改变主题
-		util.changeText($mainTitle, '6月15日，相约校歌赛') // 改变活动标题
 		judgeState() // 判断状态
-		// util.changeBg($('#js-main'),'/assets/devPics/bg.jpeg')
 	}
-	// $submitBtn.on('click', () => {
-	// 	if (judgeParams($inputName.val(), $inputStuNum.val(), $inputTel.val()) === 'success') {
-	// 		submitBtn.disintegrate()
-	// 	}
-	// })
-
-
-	// util.changeBg($('#js-main'),'https://avatars2.githubusercontent.com/u/768052?v=4')
 
 	_init()
 });
