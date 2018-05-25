@@ -3,6 +3,7 @@ define(require => {
 	const al = require('../app/dialog')
 	const request = require('../app/request')
 	const vali = require('validator')
+	const dayjs = require('dayjs')
 	const $addModal = $('#js-modal-addAct')
 	const $showAct = $('#js-modal-showAct')
 
@@ -69,21 +70,10 @@ define(require => {
 				btn: ['取消', '新建'],
 				content: $addModal,
 				btn2: () => {
-					// let $actName = $('#act-name').val()
-					// let $actDesc = $('#act-desc').val()
-					// let $actStartTime = $('#act-startTime').val()
-					// let $actRushStartTime = $('#act-rushStartTime').val()
-					// let $actRushEndTime = $('#act-rushEndTime').val()
-					// let $actBgURL = $('#act-bgURL').val()
-					// let $actTickets = $('#act-tickets').val()
-					// let $actMessage = $('#act-message').val()
-					// let $actTheme = $('#act-theme').val()
 					act.name = $('#act-name').val()
 					act.begTime = $('#act-startDate').val() + ' ' + $('#act-startTime').val()
 					act.endTime = $('#act-endDate').val() + ' ' + $('#act-endTime').val()
 					act.actStartTime = $('#rush-startDate').val() + ' ' + $('#rush-startTime').val()
-					// act.endTime = $('#act-actEndTime').val()
-					// act.actStartTime =$('#rush-startTime').val()
 					act.Content = $('#act-message').val()
 					act.tickets = $('#act-tickets').val()
 					act.theme = $('#act-theme').val()
@@ -107,9 +97,30 @@ define(require => {
 		})
 	}
 
+	//
+	const showActDetail = (actAtr,actinfo) => {
+		layer.ready(() => {
+			$('#js-act-name').val(actinfo.name)
+			$('#js-act-startTime').val(dayjs(actAtr.begTime).format('yyyy-mm-dd hh:mm'))
+			$('#js-act-endTime').val(dayjs(actAtr.endTime).format('yyyy-mm-dd hh:mm'))
+			$('#js-rush-startTime').val(dayjs(actAtr.seckilltime).format('yyyy-mm-dd hh:mm'))
+			$('#js-act-message').val(actinfo.textDetail)
+			$('#js-act-tickets').val(actAtr.tickets)
+			$('#js-act-theme').val(actinfo.theme)
+			$('#js-act-bgURL').val(actinfo.imgurl)
+			$('#js-act-desc').val(actinfo.des)
+			layer.open({
+				title: '查看活动',
+				btn: ['关闭'],
+				content: $addModal,
+				...basicConfig
+			});
+		})
+	}
 	return {
 		showDemo,
 		showActModal,
-		addActModal
+		addActModal,
+		showActDetail
 	}
 })

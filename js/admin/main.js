@@ -54,6 +54,10 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 			if ($(e.target).attr('id') === 'admin-op-info') {
 				// 查看
 				console.log($(e.target).attr('data-id'))
+				request.getAct($(e.target).attr('data-id'))
+					.then(res => {
+						// 弹框显示详情
+					})
 			}
 			if ($(e.target).attr('id') === 'admin-op-export') {
 				// 导出用户数据
@@ -84,14 +88,19 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 				util.setSession('login', `${userName}，退出请点击`)
 				request.getAllAct()
 					.then(res => {
-						/* TODO 渲染数据*/
-						console.log(res)
+						renderFn.renderTable(res)
 					})
 				changeState()
 			})
 
 		})
 		changeState()
+		if (util.getSession('token')) {
+			request.getAllAct()
+				.then(res => {
+					renderFn.renderTable(res)
+				})
+		}
 		$('#js-loader').hide()
 	}
 

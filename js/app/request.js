@@ -34,7 +34,7 @@ define((require) => {
 				baseConfig.data = JSON.stringify(data)
 				baseConfig.contentType = 'application/json; charset=utf-8'
 			}
-			console.log(baseConfig)
+			// console.log(baseConfig)
 			ajax(baseConfig)
 		})
 	}
