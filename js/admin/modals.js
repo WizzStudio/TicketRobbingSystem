@@ -101,10 +101,10 @@ define(require => {
 	const showActDetail = (actAtr,actinfo) => {
 		layer.ready(() => {
 			$('#js-act-name').val(actinfo.name)
-			$('#js-act-startTime').val(dayjs(actAtr.begTime).format('yyyy-mm-dd hh:mm'))
-			$('#js-act-endTime').val(dayjs(actAtr.endTime).format('yyyy-mm-dd hh:mm'))
-			$('#js-rush-startTime').val(dayjs(actAtr.seckilltime).format('yyyy-mm-dd hh:mm'))
-			$('#js-act-message').val(actinfo.textDetail)
+			$('#js-act-startTime').val(dayjs(actAtr.begTime).format('YYYY-MM-DD HH:MM'))
+			$('#js-act-endTime').val(dayjs(actAtr.endTime).format('YYYY-MM-DD HH:MM'))
+			$('#js-rush-startTime').val(dayjs(parseInt(actAtr.seckilltime)).format('YYYY-MM-DD HH:MM'))
+			$('#js-act-message').val(actinfo.textdetail)
 			$('#js-act-tickets').val(actAtr.tickets)
 			$('#js-act-theme').val(actinfo.theme)
 			$('#js-act-bgURL').val(actinfo.imgurl)
@@ -112,7 +112,7 @@ define(require => {
 			layer.open({
 				title: '查看活动',
 				btn: ['关闭'],
-				content: $addModal,
+				content: $showAct,
 				...basicConfig
 			});
 		})

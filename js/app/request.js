@@ -62,7 +62,7 @@ define((require) => {
 		return request('/tickets', 'post', {
 			stuName: stuName,
 			stuId: stuNumber,
-			phoneNumber: tel
+			phoneNum: tel
 		})
 	}
 

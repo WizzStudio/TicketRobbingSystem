@@ -5,7 +5,7 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 	// const util = require('../app/utils')
 	// const renderFn = require('./render')
 	// const modals = require('./modals')
-	/* TODO [登录后逻辑] 【获取活动列表】 【添加活动】 【删除活动】 【修改活动】*/
+	/* TODO [登录后逻辑] 【删除活动】*/
 	// elements
 	const $actTable = $('#js-actTable').children('tbody')
 	const $addActBtn = $('#js-addAct')
@@ -48,15 +48,17 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 		isLogin() ? state1() : state0()
 	}
 
-	const init = () => {
-		// listener
+	// 绑定table的点击按钮事件
+	const bindTableEvent = () => {
 		$actTable.find('td').on('click', (e) => {
+			// console.log($(e.target).attr('id'))
 			if ($(e.target).attr('id') === 'admin-op-info') {
 				// 查看
 				console.log($(e.target).attr('data-id'))
 				request.getAct($(e.target).attr('data-id'))
 					.then(res => {
 						// 弹框显示详情
+						modals.showActDetail(res.actatr, res.actinfo)
 					})
 			}
 			if ($(e.target).attr('id') === 'admin-op-export') {
@@ -67,7 +69,14 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 				// 删除
 				console.log($(e.target).attr('data-id'))
 			}
+			if ($(e.target).attr('id') === 'admin-op-message') {
+				// 发送短信
+				console.log($(e.target).attr('data-id'))
+			}
 		}) // 表单操作按钮
+	}
+
+	const init = () => {
 		$addActBtn.on('click', () => {
 			modals.showActModal();
 		}) // 新增活动按钮
@@ -89,6 +98,7 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 				request.getAllAct()
 					.then(res => {
 						renderFn.renderTable(res)
+						bindTableEvent()
 					})
 				changeState()
 			})
@@ -99,6 +109,7 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 			request.getAllAct()
 				.then(res => {
 					renderFn.renderTable(res)
+					bindTableEvent()
 				})
 		}
 		$('#js-loader').hide()
