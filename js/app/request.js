@@ -9,7 +9,6 @@ define((require) => {
 				url: baseUrl + url,
 				method: method,
 				success: (data, _, xhr) => {
-					// console.log(xhr.getResponseHeader('Authorization'))
 					if (xhr.getResponseHeader('Authorization')) {
 						data.token = xhr.getResponseHeader('Authorization')
 					}
@@ -24,16 +23,18 @@ define((require) => {
 				}
 			}
 
-			if (window.sessionStorage.getItem('token')) {
-				console.log('存储token', window.sessionStorage.getItem('token'))
-				baseConfig['headers'] = {
-					Authorization: window.sessionStorage.getItem('token')
-				}
-			}
 			if (method.toUpperCase() === 'POST' || method.toUpperCase() === 'DELETE') {
+				if (window.sessionStorage.getItem('token')) {
+					console.log('存储token', window.sessionStorage.getItem('token'))
+					// baseConfig['headers'] = {
+					// 	Authorization: window.sessionStorage.getItem('token')
+					// }
+					data.token = window.sessionStorage.getItem('token')
+				}
 				baseConfig.data = JSON.stringify(data)
 				baseConfig.contentType = 'application/json; charset=utf-8'
 			}
+			console.log(baseConfig)
 			ajax(baseConfig)
 		})
 	}
@@ -85,16 +86,17 @@ define((require) => {
 
 	const addAct = (actInfo) => {
 		return request('/activity', 'post', {
-			Id: actInfo.id,
+			// Id: actInfo.id,
 			begTime: actInfo.begTime,
 			endTime: actInfo.endTime,
 			actStartTime: actInfo.actStartTime,
-			Content: actInfo.content,
+			Content: actInfo.Content,
 			name: actInfo.name,
 			description: actInfo.description,
 			theme: actInfo.theme,
 			tickets: actInfo.tickets,
-			params: actInfo.params
+			imgUrl: actInfo.imgUrl
+			// params: actInfo.params
 		})
 	}
 

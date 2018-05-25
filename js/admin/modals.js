@@ -1,6 +1,7 @@
 define(require => {
 	const layer = require('../lib/layer/layer')
 	const al = require('../app/dialog')
+	const request = require('../app/request')
 	const vali = require('validator')
 	const $addModal = $('#js-modal-addAct')
 	const $showAct = $('#js-modal-showAct')
@@ -15,7 +16,6 @@ define(require => {
 		theme: '',
 		tickets: ''
 	}
-
 
 
 	let basicConfig = {
@@ -44,7 +44,7 @@ define(require => {
 	}
 
 	const validateParams = (data) => {
-		for	(let item of Object.values(data)) {
+		for (let item of Object.values(data)) {
 			if (!item.length) {
 				al.showErrorMessage('字段不能为空')
 				return false
@@ -68,7 +68,7 @@ define(require => {
 				title: '新建活动',
 				btn: ['取消', '新建'],
 				content: $addModal,
-				btn2: ()=>{
+				btn2: () => {
 					// let $actName = $('#act-name').val()
 					// let $actDesc = $('#act-desc').val()
 					// let $actStartTime = $('#act-startTime').val()
@@ -79,19 +79,28 @@ define(require => {
 					// let $actMessage = $('#act-message').val()
 					// let $actTheme = $('#act-theme').val()
 					act.name = $('#act-name').val()
-					act.begTime = $('#act-startDate').val() +' '+ $('#act-startTime').val()
-					act.endTime = $('#act-endDate').val() +' '+ $('#act-endTime').val()
-					act.actStartTime = $('#rush-startDate').val() +' '+ $('#rush-startTime').val()
+					act.begTime = $('#act-startDate').val() + ' ' + $('#act-startTime').val()
+					act.endTime = $('#act-endDate').val() + ' ' + $('#act-endTime').val()
+					act.actStartTime = $('#rush-startDate').val() + ' ' + $('#rush-startTime').val()
 					// act.endTime = $('#act-actEndTime').val()
 					// act.actStartTime =$('#rush-startTime').val()
 					act.Content = $('#act-message').val()
 					act.tickets = $('#act-tickets').val()
-					act.theme =  $('#act-theme').val()
+					act.theme = $('#act-theme').val()
 					act.imgUrl = $('#act-bgURL').val()
 					act.description = $('#act-desc').val()
+					/* DEV */
 					console.log(act)
 					if (!validateParams(act)) return false
-					al.showSuccessMessage('新建成功！')
+					request.addAct(act)
+						.then(res => {
+							if (res.result) {
+								al.showErrorMessage(res.des)
+								return false
+							}
+							al.showSuccessMessage('新建成功！')
+							window.location.reload()
+						})
 				},
 				...basicConfig
 			});

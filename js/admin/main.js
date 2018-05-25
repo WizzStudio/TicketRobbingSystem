@@ -52,12 +52,15 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 		// listener
 		$actTable.find('td').on('click', (e) => {
 			if ($(e.target).attr('id') === 'admin-op-info') {
+				// 查看
 				console.log($(e.target).attr('data-id'))
 			}
 			if ($(e.target).attr('id') === 'admin-op-export') {
+				// 导出用户数据
 				console.log($(e.target).attr('data-id'))
 			}
 			if ($(e.target).attr('id') === 'admin-op-delete') {
+				// 删除
 				console.log($(e.target).attr('data-id'))
 			}
 		}) // 表单操作按钮
@@ -74,17 +77,19 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 			if (!userName || !password) return al.showErrorMessage('用户名或密码不能为空')
 			request.loginAdmin(userName, password).then((res) => {
 				if (res.result) {
-					console.log(res)
 				 return al.showErrorMessage(res.des)
 				}
+				util.setSession('token', res.token)
+				al.showSuccessMessage('登录成功！')
 				util.setSession('login', `${userName}，退出请点击`)
+				request.getAllAct()
+					.then(res => {
+						/* TODO 渲染数据*/
+						console.log(res)
+					})
 				changeState()
 			})
 
-			/* DEV */
-			util.setSession('login', `Acery，退出请点击`)
-			changeState()
-			/**/
 		})
 		changeState()
 		$('#js-loader').hide()
