@@ -15,7 +15,7 @@ define(require => {
      <td>
          <div class="btn-group btn-group-xs btn-group" role="group" aria-label="...">
              <button id="admin-op-info" type="button" class="btn btn-info" data-id="${data.actatr ? data.actatr.actid : 0}">查看详情</button>
-             <button id="admin-op-export" type="button" class="btn btn-success" data-id="${data.actatr ? data.actatr.actd : 0}">导出数据</button>
+             <button id="admin-op-export" type="button" class="btn btn-success" data-id="${data.actatr ? data.actatr.actid : 0}">导出数据</button>
              <button id="admin-op-delete" type="button" class="btn btn-danger" data-id="${data.actatr ? data.actatr.actid : 0}">删除活动</button>
              <button id="admin-op-message" type="button" class="btn btn-success" data-id="${data.actatr ? data.actatr.actid : 0}">发送短信</button>
          </div>

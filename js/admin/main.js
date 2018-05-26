@@ -64,6 +64,10 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 			if ($(e.target).attr('id') === 'admin-op-export') {
 				// 导出用户数据
 				console.log($(e.target).attr('data-id'))
+				request.getXls($(e.target).attr('data-id'))
+					.then(res => {
+						console.log(res)
+					})
 			}
 			if ($(e.target).attr('id') === 'admin-op-delete') {
 				// 删除
@@ -81,12 +85,14 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 			if ($(e.target).attr('id') === 'admin-op-message') {
 				// 发送短信
 				console.log($(e.target).attr('data-id'))
-				modals.confirmMessage()
-				// request.sendMessage($(e.target).attr('data-id'))
-				// 	.then(res => {
-				// 		if (res.result) return al.showErrorMessage(res.des)
-				// 		al.showSuccessMessage(res.des)
-				// 	})
+				modals.confirmMessage(() => {
+					request.sendMessage($(e.target).attr('data-id'))
+						.then(res => {
+							if (res.result) return al.showErrorMessage(res.des)
+							al.showSuccessMessage(res.des)
+						})
+				})
+
 			}
 		}) // 表单操作按钮
 	}

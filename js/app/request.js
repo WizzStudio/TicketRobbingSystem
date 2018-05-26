@@ -25,7 +25,7 @@ define((require) => {
 
 			if (method.toUpperCase() === 'POST' || method.toUpperCase() === 'DELETE') {
 				if (window.sessionStorage.getItem('token')) {
-					console.log('存储token', window.sessionStorage.getItem('token'))
+					// console.log('存储token', window.sessionStorage.getItem('token'))
 					// baseConfig['headers'] = {
 					// 	Authorization: window.sessionStorage.getItem('token')
 					// }
@@ -84,6 +84,11 @@ define((require) => {
 		return request('/user', 'post', {userName, password})
 	}
 
+
+	const getXls = (id) => {
+		return request('/sql', 'post', {actid: id})
+	}
+
 	const addAct = (actInfo) => {
 		return request('/activity', 'post', {
 			// Id: actInfo.id,
@@ -114,6 +119,7 @@ define((require) => {
 		loginAdmin,
 		deleteAct,
 		addAct,
-		getAct
+		getAct,
+		getXls
 	}
 })

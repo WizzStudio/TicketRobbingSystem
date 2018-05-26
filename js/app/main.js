@@ -74,9 +74,9 @@ define((require) => {
 				util.changeText($mainTitle, actInfo.name)
 				util.changeText($cardTitle,actInfo.name)
 				util.changeText($('#js-act-des'), actInfo.des)
-				util.changeText($cardStartTime, dayjs(actAtr.begTime).format('YYYY-MM-DD HH:MM'))
-				util.changeText($cardEndTime, dayjs(actAtr.endTime).format('YYYY-MM-DD HH:MM'))
-				util.changeText($('#js-rush-rushStartTime'), dayjs(parseInt(actAtr.seckilltime)).format('YYYY-MM-DD HH:MM'))
+				util.changeText($cardStartTime, dayjs(parseInt(actAtr.begtime)).format('YYYY-MM-DD hh:mm'))
+				util.changeText($cardEndTime, dayjs(parseInt(actAtr.endtime)).format('YYYY-MM-DD hh:mm'))
+				util.changeText($('#js-rush-rushStartTime'), dayjs(parseInt(actAtr.seckilltime)).format('YYYY-MM-DD hh:mm'))
 				util.changeBg($('#js-main'), actInfo.imgurl)
 				actInfo.theme ? changeTheme('dark') : changeTheme('light') // 1黑色 0白色
 			})
