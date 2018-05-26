@@ -5,7 +5,6 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 	// const util = require('../app/utils')
 	// const renderFn = require('./render')
 	// const modals = require('./modals')
-	/* TODO [登录后逻辑] 【删除活动】*/
 	// elements
 	const $actTable = $('#js-actTable').children('tbody')
 	const $addActBtn = $('#js-addAct')
@@ -67,6 +66,12 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 				request.getXls($(e.target).attr('data-id'))
 					.then(res => {
 						console.log(res)
+						let bArray = new Int8Array(res)
+						console.log(bArray)
+						modals.showExcel(window.URL.createObjectURL(new Blob(res, {
+							type:'application/vnd.ms-excel'
+						})))
+						// console.log(res)
 					})
 			}
 			if ($(e.target).attr('id') === 'admin-op-delete') {

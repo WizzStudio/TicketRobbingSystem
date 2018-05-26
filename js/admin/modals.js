@@ -148,12 +148,26 @@ define(require => {
 		})
 	}
 
+	const showExcel = (url) => {
+		console.log(url)
+		layer.ready(() => {
+			$('#js-excel').attr('href',url)
+			layer.open({
+				title: '查看链接',
+				btn: ['关闭'],
+				content: $('#js-modal-excel'),
+				...basicConfig
+			});
+		})
+	}
+
 	return {
 		showDemo,
 		showActModal,
 		addActModal,
 		showActDetail,
 		confirmMessage,
-		confirmDialog
+		confirmDialog,
+		showExcel
 	}
 })

@@ -24,15 +24,20 @@ define((require) => {
 			}
 
 			if (method.toUpperCase() === 'POST' || method.toUpperCase() === 'DELETE') {
+				baseConfig.contentType = 'application/json; charset=utf-8'
 				if (window.sessionStorage.getItem('token')) {
 					// console.log('存储token', window.sessionStorage.getItem('token'))
 					// baseConfig['headers'] = {
 					// 	Authorization: window.sessionStorage.getItem('token')
 					// }
+					if (url === '/sql') {
+						console.log('get')
+						baseConfig.responseType = 'blob'
+						baseConfig.contentType = 'application/vnd.ms-excel; charset=utf-8'
+					}
 					data.token = window.sessionStorage.getItem('token')
 				}
 				baseConfig.data = JSON.stringify(data)
-				baseConfig.contentType = 'application/json; charset=utf-8'
 			}
 			// console.log(baseConfig)
 			ajax(baseConfig)

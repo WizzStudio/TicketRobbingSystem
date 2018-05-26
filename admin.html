@@ -111,7 +111,7 @@
         <input id="act-tickets" type="number" class="form-control" placeholder="请输入发票数" maxlength="5">
     </div>
     <h4 class="mg20">短信配置</h4>
-    <textarea id="act-message" class="form-control message" rows="3" style="resize: none" maxlength="140" placeholder="请保证你的短信模板已经在【短信平台】审核通过了（精确到标点）">#{姓名}同学， 恭喜您抢票成功，请于#{变量1}到#{变量2}领取您的门票。</textarea>
+    <textarea id="act-message" class="form-control message" rows="3" style="resize: none" maxlength="140" placeholder="#{姓名}不要改动，{时间}和{地点}替换成相应的领票时间和地点">【西电学生会】#{姓名}同学， 恭喜您抢票成功，请于{时间}到{地点}领取您的门票。</textarea>
     <div class="input-group">
         <span class="input-group-addon">主题</span>
         <input id="act-theme" type="number" class="form-control" placeholder="请输入0或1，0代表亮色，1代表暗色">
@@ -175,6 +175,9 @@
     <button class="btn  freshBtn bounceInUp animated">RELOAD</button>
 </div>
 
+<div id="js-modal-excel">
+    <a  id="js-excel"  href="" download="抢票活动导出数据.xls"></a>
+</div>
 
 <!--<script src="js/lib/jquery.js"></script>-->
 <!--<script src="js/lib/bootstrap.js"></script>-->
