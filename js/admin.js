@@ -17,6 +17,6 @@ requirejs.config({
 });
 
 // entry files
-window.onload = () => {
+// window.onload = () => {
 	requirejs(['../admin/main']);
-}
+// }
