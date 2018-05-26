@@ -117,10 +117,43 @@ define(require => {
 			});
 		})
 	}
+
+	const confirmMessage = (cbfn) => {
+		layer.ready(() => {
+			layer.open({
+				title: '发送',
+				btn: ['关闭','确认'],
+				btn2: () => {
+					cbfn()
+				},
+				content: '注意：短信只能发送一次，请注意查看导出数据核对数量无误后点击确定发送短信',
+				type:0,
+				area: ['200px', '200px']
+			});
+		})
+	}
+
+	const confirmDialog = (title,content, cbfn) => {
+		layer.ready(() => {
+			layer.open({
+				title: title,
+				btn: ['关闭','确认'],
+				btn2: () => {
+					cbfn()
+				},
+				content: content,
+				type:0,
+				area: ['200px', '200px']
+			});
+		})
+	}
+
 	return {
 		showDemo,
 		showActModal,
 		addActModal,
-		showActDetail
+		showActDetail,
+		confirmMessage,
+		confirmDialog
 	}
 })

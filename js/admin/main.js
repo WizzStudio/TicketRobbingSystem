@@ -54,7 +54,7 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 			// console.log($(e.target).attr('id'))
 			if ($(e.target).attr('id') === 'admin-op-info') {
 				// 查看
-				console.log($(e.target).attr('data-id'))
+				// console.log($(e.target).attr('data-id'))
 				request.getAct($(e.target).attr('data-id'))
 					.then(res => {
 						// 弹框显示详情
@@ -68,10 +68,25 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 			if ($(e.target).attr('id') === 'admin-op-delete') {
 				// 删除
 				console.log($(e.target).attr('data-id'))
+
+				modals.confirmDialog('删除', '确认删除该活动？', () => {
+					request.deleteAct($(e.target).attr('data-id'))
+						.then(res => {
+							if (res.result) return al.showErrorMessage(res.des)
+							al.showSuccessMessage('删除成功！')
+							window.location.reload()
+						})
+				})
 			}
 			if ($(e.target).attr('id') === 'admin-op-message') {
 				// 发送短信
 				console.log($(e.target).attr('data-id'))
+				modals.confirmMessage()
+				// request.sendMessage($(e.target).attr('data-id'))
+				// 	.then(res => {
+				// 		if (res.result) return al.showErrorMessage(res.des)
+				// 		al.showSuccessMessage(res.des)
+				// 	})
 			}
 		}) // 表单操作按钮
 	}

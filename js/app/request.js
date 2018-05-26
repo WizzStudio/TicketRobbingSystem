@@ -72,8 +72,8 @@ define((require) => {
 	}
 
 	// 短信发送接口
-	const sendMessage = () => {
-		return request('/message')
+	const sendMessage = (id) => {
+		return request('/message', 'post', {actid: id})
 	}
 
 	const loginAdmin = (userName, password) => {
@@ -101,7 +101,7 @@ define((require) => {
 	}
 
 	const deleteAct = (actId) => {
-		request('/activity', 'delete', {Id: actId})
+		return	request('/activity', 'delete', {actid: actId})
 	}
 
 	return {
