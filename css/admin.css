@@ -512,6 +512,9 @@
 .admin-main {
   display: none; }
 
+#js-modal-excel {
+  display: none; }
+
 .modal-addAct {
   display: none; }
   .modal-addAct .mg20 {

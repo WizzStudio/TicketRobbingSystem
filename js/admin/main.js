@@ -65,11 +65,11 @@ define(['jquery', '../app/request', '../app/dialog', '../app/utils' , './render'
 				console.log($(e.target).attr('data-id'))
 				request.getXls($(e.target).attr('data-id'))
 					.then(res => {
+						let bArray = []
+						bArray.push(res)
 						console.log(res)
-						let bArray = new Int8Array(res)
-						console.log(bArray)
-						modals.showExcel(window.URL.createObjectURL(new Blob(res, {
-							type:'application/vnd.ms-excel'
+						modals.showExcel(window.URL.createObjectURL(new Blob(bArray, {
+							type:'application/vnd.ms-excel;charset=utf-8'
 						})))
 						// console.log(res)
 					})

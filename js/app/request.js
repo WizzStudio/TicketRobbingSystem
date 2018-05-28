@@ -30,11 +30,11 @@ define((require) => {
 					// baseConfig['headers'] = {
 					// 	Authorization: window.sessionStorage.getItem('token')
 					// }
-					if (url === '/sql') {
-						console.log('get')
-						baseConfig.responseType = 'blob'
-						baseConfig.contentType = 'application/vnd.ms-excel; charset=utf-8'
-					}
+					// if (url === '/sql') {
+					// 	console.log('get')
+					// 	// baseConfig.responseType = 'blob'
+					// 	// baseConfig.contentType = 'application/vnd.ms-excel; charset=utf-8'
+					// }
 					data.token = window.sessionStorage.getItem('token')
 				}
 				baseConfig.data = JSON.stringify(data)

@@ -68,11 +68,16 @@ define((require) => {
 	const renderAct = () => {
 		request.getAct(getQueryVariable('actid'))
 			.then(res => {
+				if (res.result) {
+					setTimeout(() => {
+						al.showErrorMessage(res.des)
+						$('body').empty()
+					}, 2000)
+				}
 				let actInfo = res.actinfo
-				let actAtr  = res.actatr
-				/*TODO 解析时间戳*/
+				let actAtr = res.actatr
 				util.changeText($mainTitle, actInfo.name)
-				util.changeText($cardTitle,actInfo.name)
+				util.changeText($cardTitle, actInfo.name)
 				util.changeText($('#js-act-des'), actInfo.des)
 				util.changeText($cardStartTime, dayjs(parseInt(actAtr.begtime)).format('YYYY-MM-DD hh:mm'))
 				util.changeText($cardEndTime, dayjs(parseInt(actAtr.endtime)).format('YYYY-MM-DD hh:mm'))

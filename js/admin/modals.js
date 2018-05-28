@@ -156,7 +156,8 @@ define(require => {
 				title: '查看链接',
 				btn: ['关闭'],
 				content: $('#js-modal-excel'),
-				...basicConfig
+				type:1,
+				area: ['200px', '200px']
 			});
 		})
 	}
