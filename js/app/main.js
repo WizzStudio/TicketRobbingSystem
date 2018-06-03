@@ -34,6 +34,9 @@ define((require) => {
 	// configuration
 	const btnDurationTime = 600
 
+	// trigger
+	let isCalled = false
+
 	const submitBtn = new Particles('button.js-submit-button', {
 		duration: btnDurationTime,
 	})
@@ -131,6 +134,7 @@ define((require) => {
 	// 校验当前客户端状态 0 新用户 1 存储了信息的用户
 	const judgeState = () => {
 		const clearState = () => {
+			isCalled = false
 			$mainBox.hide()
 			$loader.hide()
 			$rush.hide()
@@ -163,18 +167,6 @@ define((require) => {
 			$clearBtn.show()
 			$footer.show()
 			$rush.show()
-			// $clearBtn.unbind('click')
-			// $clearBtn.on('click', () => {
-			// 	clearBtn.disintegrate()
-			// 	util.removeAllStore()
-			// 	util.setStore('state', '0')
-			// 	window.setTimeout(() => {
-			// 		al.showSuccessMessage('清除成功！')
-			// 		resetBtn()
-			// 		judgeState()
-			// 	}, btnDurationTime)
-			//
-			// })
 		}
 		const showState2 = () => {
 			clearState()
@@ -184,13 +176,6 @@ define((require) => {
 			$clearBtn.show()
 			$rushBtn.show()
 			$footer.show()
-			// $rushBtn.unbind('click')
-			// $rushBtn.on('click', () => {
-			// 	/* TODO  发送抢票请求 */
-			// 	al.showSuccessMessage('抢票成功')
-			// 	util.setStore('state', '3')
-			// 	judgeState()
-			// })
 		}
 		const showState3 = () => {
 			clearState()
@@ -244,24 +229,36 @@ define((require) => {
 		renderAct()
 
 		// 抢票
-		$rushBtn.on('click', util.debounce(() => {
+		$rushBtn.on('click', () => {
 			/* DEV 压力测试*/
 			// for(let i =0; i<600; i++ ) {
 			// 	request.rushTicket(Math.random().toString(),Math.random().toString(),Math.random().toString())
 			// }
-			request.rushTicket(util.getStore('name'), util.getStore('stuNum'), util.getStore('tel'))
-				.then(res => {
-					if (res.result) {
-						return al.showErrorMessage(res.des)
-					}
-					al.showSuccessMessage('抢票成功')
-					util.setStore('state', '3')
-					judgeState()
-				})
-				.catch(err => {
-					console.error('错误')
-				})
-		}, 1000))
+
+			// triggerOnce
+			if (isCalled) {
+				return al.showErrorMessage('你已抢票，请勿重复点击')
+			}
+
+			isCalled = true
+
+			// util.debounce(() => {
+				request.rushTicket(util.getStore('name'), util.getStore('stuNum'), util.getStore('tel'))
+					.then(res => {
+						if (res.result) {
+							isCalled = false
+							return al.showErrorMessage(res.des)
+						}
+						al.showSuccessMessage('抢票成功')
+						util.setStore('state', '3')
+						judgeState()
+					})
+					.catch(err => {
+						isCalled = false
+						console.error('错误')
+					})
+			// }, 1000)
+		})
 		// 清除信息
 		$clearBtn.on('click', () => {
 			clearBtn.disintegrate()
