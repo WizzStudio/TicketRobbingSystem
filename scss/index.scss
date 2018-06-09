@@ -196,7 +196,11 @@ p {
     &-power {
       line-height: 1rem;
       text-align: center;
-      color: $light;
+      color: #000000;
+      width: 100%;
+      position: fixed;
+      bottom: 1rem;
+      left: 0;
       font-weight: 300;
       font-size: 18px;
     }

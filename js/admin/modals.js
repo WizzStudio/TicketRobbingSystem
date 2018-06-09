@@ -101,9 +101,9 @@ define(require => {
 	const showActDetail = (actAtr,actinfo) => {
 		layer.ready(() => {
 			$('#js-act-name').val(actinfo.name)
-			$('#js-act-startTime').val(dayjs(parseInt(actAtr.begtime)).format('YYYY-MM-DD hh:mm'))
-			$('#js-act-endTime').val(dayjs(parseInt(actAtr.endtime)).format('YYYY-MM-DD hh:mm'))
-			$('#js-rush-startTime').val(dayjs(parseInt(actAtr.seckilltime)).format('YYYY-MM-DD hh:mm'))
+			$('#js-act-startTime').val(dayjs(parseInt(actAtr.begtime)).format('YYYY-MM-DD HH:mm'))
+			$('#js-act-endTime').val(dayjs(parseInt(actAtr.endtime)).format('YYYY-MM-DD HH:mm'))
+			$('#js-rush-startTime').val(dayjs(parseInt(actAtr.seckilltime)).format('YYYY-MM-DD HH:mm'))
 			$('#js-act-message').val(actinfo.textdetail)
 			$('#js-act-tickets').val(actAtr.tickets)
 			$('#js-act-theme').val(actinfo.theme)

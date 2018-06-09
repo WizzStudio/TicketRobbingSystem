@@ -711,6 +711,10 @@ p {
     .main-footer-power {
       line-height: 1rem;
       text-align: center;
-      color: #fff;
+      color: #000000;
+      width: 100%;
+      position: fixed;
+      bottom: 1rem;
+      left: 0;
       font-weight: 300;
       font-size: 18px; }
