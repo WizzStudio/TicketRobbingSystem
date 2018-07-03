@@ -96,7 +96,7 @@
 
 <!--loading动画-->
 <div class="loader-wrapper" id="js-loader">
-    <p class="main-footer-power text-black-50">powered by 为之工作室</p>
+    <!--<p class="main-footer-power text-black-50">powered by 为之工作室</p>-->
     <div class="loader">
         <div class="roller"></div>
         <div class="roller"></div>
@@ -133,63 +133,6 @@
 				window.location.reload()
 			}
 		}, false);
-//
-//			wx.config({
-//				debug: false,
-//				appId: '{%$appId%}',
-//				timestamp:'{%$timestamp%}',
-//				nonceStr: '{%$nonceStr%}',
-//				signature: '{%$signature%}',
-//				jsApiList: [
-//					'checkJsApi',
-//					'onMenuShareTimeline',
-//					'onMenuShareAppMessage',
-//					'onMenuShareQQ',
-//					'onMenuShareWeibo',
-//					'onMenuShareQZone',
-//					'hideMenuItems',
-//					'showMenuItems',
-//					'hideAllNonBaseMenuItem',
-//					'showAllNonBaseMenuItem',
-//					'translateVoice',
-//					'startRecord',
-//					'stopRecord',
-//					'onVoiceRecordEnd',
-//					'playVoice',
-//					'onVoicePlayEnd',
-//					'pauseVoice',
-//					'stopVoice',
-//					'uploadVoice',
-//					'downloadVoice',
-//					'chooseImage',
-//					'previewImage',
-//					'uploadImage',
-//					'downloadImage',
-//					'getNetworkType',
-//					'openLocation',
-//					'getLocation',
-//					'hideOptionMenu',
-//					'showOptionMenu',
-//					'closeWindow',
-//					'scanQRCode',
-//					'chooseWXPay',
-//					'openProductSpecificView',
-//					'addCard',
-//					'chooseCard',
-//					'openCard'
-//				]
-//			});
-//			wx.ready(function () {
-//				var share_title = "熊掌号是什么-百度搜索资源平台";
-//				var share_desc = "熊掌号是什么，都有哪些权益？怎么开通熊掌号？熊掌号专题内容让你迅速全方位了解熊掌号的关键内容。";
-//				var share_link = "{%$http_type%}zy.baidu.com/actxzh/index?isResponsible=1";
-//				var share_imgUrl = "{%$http_type%}zhanzhang.bj.bcebos.com/xzh-intro-banner.jpg";
-//				wx.onMenuShareAppMessage({title: share_title,link: share_link,desc: share_desc,imgUrl: share_imgUrl});
-//				wx.onMenuShareTimeline({title: share_title,link: share_link,desc: share_desc,imgUrl: share_imgUrl});
-//				wx.onMenuShareQQ({title: share_title,link: share_link,desc: share_desc,imgUrl: share_imgUrl});
-//				wx.onMenuShareWeibo({title: share_title,link: share_link,desc: share_desc,imgUrl: share_imgUrl});
-//			})
-
 	} else {
 		document.getElementsByTagName('html')[0].style.fontSize = 40 + 'px'
 	}

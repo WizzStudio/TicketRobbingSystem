@@ -2,7 +2,7 @@
 define((require) => {
 	const ajax = require('jquery').ajax
 	const dialog = require('./dialog')
-	const baseUrl = 'http://47.94.212.99:8080'
+	const baseUrl = 'http://47.95.253.94:8081'
 	const request = (url = '/', method = 'get', data = {}) => {
 		return new Promise((resolve, reject) => {
 			let baseConfig = {
